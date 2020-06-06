@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Comment;
+use Illuminate\Support\Facades\Auth;
+use App\Post;
 use App\Likeable;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,42 @@ class LikeableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function addPostLike($id, Request $request)
+    {
+        {   
+            $user_id = Auth::id();
+            $post = Post::find($id);
+            $likes = $post->likes()->where('user_id',$user_id)->get();
+            if($likes->isNotEmpty()){
+                return response([
+                    'message' => 'No puedes meter más like'
+                ],400);
+            }
+            $post->likes()->create(['user_id'=>$user_id]); 
+            return response([
+                'message' => 'thanks u '
+            ],201); 
+        }
+    }
+    public function addCommnetLike($id, Request $request)
+    {
+        {   
+            $user_id = Auth::id();
+            $comment = Comment::find($id);
+            $likes = $comment->likes()->where('user_id',$user_id)->get();
+            if($likes->isNotEmpty()){
+                return response([
+                    'message' => 'No puedes meter más like para ya pesado'
+                ],400);
+            }
+            $comment->likes()->create(['user_id'=>$user_id]); 
+            return response([
+                'message' => 'thanks u ',
+                'likes' => $likes
+            ],201); 
+        }
+    }
+
     public function index()
     {
         //

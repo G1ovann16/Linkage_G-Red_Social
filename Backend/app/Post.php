@@ -19,10 +19,10 @@ class Post extends Model
     }
     public function likes()
     {
-       return $this->morphMany('\App\Like','likeable');
+       return $this->morphMany('\App\Likeable','likeable');
     }
     public function comments()
     {
-        return $this->hasMany('\App\Commnet');
+        return $this->hasMany('\App\Comment');
     }
 }

@@ -25,8 +25,8 @@ Route::prefix('posts')->group(function () {
     Route::get('/getAll', 'PostController@show');
     Route::post('/addNew', 'PostController@create');
     Route::middleware('auth:api')->group(function(){
-        Route::post('/addLike/{id}', 'LikesController@addPostLike');
-        Route::post('/addCommnet/{id}', 'LikesController@addCommnetLike');
+        Route::post('/addLike/{id}', 'LikeableController@addPostLike');
+        Route::post('/addCommnet/{id}', 'LikeableController@addCommnetLike');
         Route::put('/update/{id}', 'PostController@update');
         Route::delete('/delete/{id}', 'PostController@destroy');   
     });
