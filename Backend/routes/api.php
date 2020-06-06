@@ -18,7 +18,18 @@ Route::prefix('users')->group(function () {
     Route::post('/register', 'UserController@register');
     Route::post('/login', 'UserController@login');
     Route::get('/logout', 'UserController@logout');
-    Route::get('/getAll/{id}', 'UserController@getAll');
     Route::get('/userById/{id}', 'UserController@getUserById');
-    Route::get('/getPostsById/{id}', 'UserController@getPostsByUser');
 });
+
+Route::prefix('posts')->group(function () {
+    Route::get('/getAll', 'PostController@show');
+    Route::post('/addNew', 'PostController@create');
+    Route::middleware('auth:api')->group(function(){
+        Route::post('/addLike/{id}', 'LikesController@addPostLike');
+        Route::post('/addCommnet/{id}', 'LikesController@addCommnetLike');
+        Route::put('/update/{id}', 'PostController@update');
+        Route::delete('/delete/{id}', 'PostController@destroy');   
+    });
+});
+
+Route::post('/addComment', 'CommentController@create');
