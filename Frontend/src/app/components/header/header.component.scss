@@ -1,0 +1,50 @@
+@import '../../../color.scss';
+
+.navbar-brand{
+    color: $red;
+    font-weight: 700;
+}
+.btn-outline-success {
+    color: $red;
+    border-color:$red;
+}
+.btn-outline-success:hover {
+ background-color: $red;
+ color: white;
+}
+
+.navbar {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-link a {
+    color: $main;
+}
+
+
+
+.navLeft{
+    font-family: monospace;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    color: $colorWeb;
+}
+.navCenter,.navRight{
+    font-family: monospace;
+    letter-spacing: 1px;
+    color: $colorWeb;
+}
+header nav a, header .nav a{
+    color: $colorWeb;
+    text-decoration: none;
+    margin: 6px;
+}
+
+header .nav a:hover, header nav a:hover {
+    color:$hover;
+    text-decoration: none;
+}
+
+header .nav a.active {
+    color:$hover;
+}

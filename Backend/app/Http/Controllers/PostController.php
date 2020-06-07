@@ -50,7 +50,7 @@ class PostController extends Controller
     public function show()
     {
         try {
-            $posts = Post::with('user','comments.likes', 'likes')->get();//no saca los eliminados con deleted_at
+            $posts = Post::with('user','comments.likes', 'likes','comments.user')->get();//no saca los eliminados con deleted_at
             return response($posts);
         } catch (\Exception $e) {
             return response([
@@ -121,6 +121,33 @@ class PostController extends Controller
                 'post' => $post
             ],200);
         } catch (\Exception $e) {
+            return response([
+                'error' => $e,
+            ], 500);
+        }
+    }
+    public function uploadImage(Request $request, $id)
+    {
+        try {
+            $request->validate(['image' => 'required|image']);
+            $post = Post::find($id);
+            if($post->image){
+                // File::delete
+            }
+
+            if(Auth::id() !== $post->user_id){
+                return response([
+                    'message' => 'no eres tu descarado',
+                ],200);
+            }
+            $imageName = time() . '-' . request()->image->getClientOriginalName();
+            $request->image->move('images/posts', $imageName);
+            $post->update(['image' => $imageName]);
+            
+            return response($post);
+
+        } catch (\Exception $e) {
+            // dd($e);
             return response([
                 'error' => $e,
             ], 500);

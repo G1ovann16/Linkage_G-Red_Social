@@ -19,6 +19,9 @@ Route::prefix('users')->group(function () {
     Route::post('/login', 'UserController@login');
     Route::get('/logout', 'UserController@logout');
     Route::get('/userById/{id}', 'UserController@getUserById');
+    Route::middleware('auth:api')->group(function(){
+        Route::put('/update/{id}', 'UserController@update');
+    });
 });
 
 Route::prefix('posts')->group(function () {
@@ -28,6 +31,7 @@ Route::prefix('posts')->group(function () {
         Route::post('/addLike/{id}', 'LikeableController@addPostLike');
         Route::post('/addCommnet/{id}', 'LikeableController@addCommnetLike');
         Route::put('/update/{id}', 'PostController@update');
+        Route::put('/image/{id}', 'PostController@uploadImage');
         Route::delete('/delete/{id}', 'PostController@destroy');   
     });
 });
