@@ -70,4 +70,26 @@ class UserController extends Controller
             ], 500);
         }
     }
+    public function update(Request $request, $id)
+    {
+        try {
+            $body = $request->all();
+            $user = User::find($id);
+            if(Auth::id() == $user->user_id){
+                return response([
+                    'message' => 'Wrong Credentials',
+                ],200);
+            }
+            $user->update($body);
+            return response([
+                'User' => $user,
+                'message' => 'user succesfully updated',
+            ]);
+        } catch (\Exception $e) {
+            return response([
+                'error' => $e->getMessage(),
+                'message' => 'There was a problem trying to update the post',
+            ], 500);
+        }
+    }
 }
