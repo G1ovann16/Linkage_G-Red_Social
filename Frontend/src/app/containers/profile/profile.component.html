@@ -1,1 +1,177 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <!-- Profile-card -->
+        <div class="card mt-3">
+          <div class="card-body text-center">
+            <img class="main-avatar"
+              src="{{allPersonalPost['user']?.avatar}}" alt="">
+            <h5 class="card-title mt-3">
+              {{allPersonalPost['user']?.name}}, {{allPersonalPost['user']?.lastName}}
+            </h5>
+            <h6><i class="fas fa-map-marker-alt"></i> Valencia, Espana</h6>
+            <p>
+              {{allPersonalPost['user']?.bio}}
+              {{allPersonalPost['user']?.post.length}} posts
+            </p>
+            <h6><a class="btn btn-add" href="#"><i class="fa fa-edit"></i> Edit Profile</a></h6>
+          </div>
+        </div>
+        <!-- Friend-list -->
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              My Friends
+            </h5>
+            <div class="d-flex align-items-top">
+              <div class="p-2">
+                <img class="comments-avatar"
+                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+              </div>
+              <div class="p-2">
+                <p class="comment-username">sofiiii y la borde</p>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex align-items-top">
+              <div class="p-2">
+                <img class="comments-avatar"
+                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+              </div>
+              <div class="p-2">
+                <p class="comment-username">Martin Pinto</p>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex align-items-top">
+              <div class="p-2">
+                <img class="comments-avatar"
+                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+              </div>
+              <div class="p-2">
+                <p class="comment-username">Luco Feliu</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <div class="col-md-8 col-xs-12">
+        <!-- Post-card -->
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              Create Post
+            </h5>
+            <textarea class="form-control" id="text" [(ngModel)]="text" placeholder="Write here..." rows="3"></textarea>
+            <div class="d-flex justify-content-end mt-3">
+              <a href="#" class="btn btn-add mr-2">
+                <i class="fas fa-camera"></i>
+              </a>
+              <a (click)="addPost()" class="btn btn-post">Publish</a>
+            </div>
+          </div>
+        </div>
+        <!-- Content-card -->
+        <div class="card mt-3">
+          <div class="card-body" *ngFor="let post of allPersonalPost['user']['post']; let i = index;">
+            <div class="d-flex bd-highlight align-items-center">
+              <div class="card-title p-2 bd-highlight">
+                <img class="avatar"
+                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+              </div>
+              <div class="p-2 bd-highlight">
+                <h5><a routerLink="profile"> {{allPersonalPost['user']?.name}}</a></h5>
+              </div>
+              <div class="ml-auto p-2 bd-highlight">
+                <i class="far fa-clock"></i> hace 2h
+              </div>
+            </div>
+            <img width="100%" src="https://www.fico.com/sites/default/files/2018-05/AdobeStock_159364568%20%281%29.jpeg"
+              alt="" class="main-img">
+            <p class="mt-3">{{post.name}}</p>
+            <div class="d-flex justify-content-start mt-3 mb-3">
+              <a href="#" class="btn btn-add mr-2">
+                <i class="far fa-thumbs-up"> {{post.likes.length}}</i>
+              </a>
+              <button  href="#" class="btn btn-add mr-2" data-toggle="modal"
+                data-target="#exampleModalCenter">
+                <i class="fa fa-edit"></i>
+              </button>
+  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card mt-3">
+                          <h5 class="card-title">
+                            Edit Post
+                          </h5>
+                          <textarea class="form-control" id="editText" [(ngModel)]="editText" placeholder="Write here..." rows="3"></textarea>
+                          <div class="d-flex justify-content-end mt-3">
+                            <a href="#" class="btn btn-add mr-2">
+                              <i class="fas fa-camera"></i>
+                            </a>
+                            
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <a (click)="editPost(i)" class="btn btn-post">Publish</a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <textarea class="form-control" id="editText" [(ngModel)]="editText" placeholder="Write here..." rows="3"></textarea>
+                <a (click)="editPost(i)" class="btn btn-post">Publish</a>
+  
+  
+              <a (click)="deletePost()" href="#" class="btn btn-add mr-2">
+                <i class="fa fa-trash"></i>
+              </a>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex flex-row mb-3">
+                <div class="d-flex align-items-top">
+                  <div class="p-2">
+                    <img class="comments-avatar"
+                      src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg"
+                      alt="">
+                  </div>
+                  {{post.comments.length}}
+                  <div class="p-2" *ngFor="let comment of post.comments">
+                    <p class="comment-username"> {{comment.user.name}}</p>
+                    <p>
+                      {{comment.description}}
+                    </p>
+                    <a href="#" class="btn btn-add mr-2">
+                      <i class="far fa-thumbs-up"> {{comment.likes.length}} </i>
+                    </a>
+                    <a (click)="editPost(i)" href="#" class="btn btn-add mr-2">
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <a (click)="deletePost()" href="#" class="btn btn-add mr-2">
+                      <i class="fa fa-trash"></i>
+                    </a>
+  
+                  </div>
+  
+                </div>
+              </div>
+              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write here..."
+                rows="1"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
