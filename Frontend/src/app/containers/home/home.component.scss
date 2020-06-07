@@ -1,0 +1,70 @@
+@import '../../../color.scss';
+
+
+
+.btn-post{
+    background-color: $title;
+    color: white;
+}
+.btn-add{
+    background-color: white;
+    border-color: $title;
+    color: $title;
+}
+
+.btn-post:hover{
+    background-color: white;
+    border-color: $title;
+    color: $title;
+}
+.btn-add:hover{
+    background-color: $title;
+    color: white;
+}
+
+.card-title{
+    .avatar{
+        width: 35px;
+        height: 35px;
+        border-radius: 50px;
+    }
+   a {
+       all: unset;
+       cursor: pointer;
+        color: $title;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mainTitle{
+    font-family: monospace;
+    letter-spacing: 1px;
+    font-size: 2rem;
+}
+
+.postTitle{
+    font-family: cursive;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    height: 100px;
+}
+
+.textPost{
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: cursive;
+}
