@@ -1,0 +1,21 @@
+@import '../../../color.scss';
+
+.border{
+    width: fit-content;
+    align-items: center;
+}
+
+.login-form {
+    border: 1px solid $main !important;
+    border-radius: 8px;
+}
+
+
+p span {
+    color: $red;
+    font-weight: 700;
+}
+
+a {
+    color: $red;
+}

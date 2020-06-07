@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+       
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col align-self-start">
+      </div>
+      <div class="col align-self-center">
+        <form  #userform="ngForm" (submit)="loginIn(userform)" class="text-center border border-light p-5 login-form">
+    
+          <p class="h3 mb-4">Welcome to <span>Linkage G</span></p>
+          <p class="mb-4">Sign in into your account</p>
+        
+          <!-- Email -->
+          <input type="email" id="defaultLoginFormEmail" name="email" ngModel class="form-control mb-4" placeholder="E-mail">
+        
+          <!-- Password -->
+          <input type="password" id="defaultLoginFormPassword" name="password" ngModel class="form-control mb-4" placeholder="Password">
+        
+          <div class="d-flex justify-content-around">
+            <div>
+              <!-- Forgot password -->
+              <a href="">Forgot password?</a>
+            </div>
+          </div>
+        
+          <!-- Sign in button -->
+          <button class="btn btn-add mt-4 mb-3" block="true" type="submit">Sign in</button>
+        
+          <!-- Register -->
+          <p>Not a member?
+            <a href="">Register</a>
+          </p>
+  
+        
+          </form>
+      </div>
+      <div class="col align-self-end">
+      </div>
+    </div>
+  </div>
