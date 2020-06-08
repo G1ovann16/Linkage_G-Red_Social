@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
     {
       console.log(registerform.value);
       this.userService.setNewRegister(registerform.value)
-        .subscribe(() => {
+      .subscribe(() => {
+          // this.userService.setActive(true);
           setTimeout(() => this.router.navigate(['/login']), 2000);
         },
         (error: HttpErrorResponse) => {
