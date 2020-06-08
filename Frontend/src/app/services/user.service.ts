@@ -11,25 +11,26 @@ import { EmailValidator } from '@angular/forms';
 export class UserService {
 public email = {};
 public idUserActual = 0;
+public userActive = false;
 
   constructor(private http: HttpClient) { }
 
   //#region POST register login password
   setNewRegister(body: any){
-    console.log('body');
+    console.log(body);
     return this.http.post<any>(environment.API_URL + '/users/register', body);
   }
   setNewLogin(body: any){
   return this.http.post<any>(environment.API_URL + '/users/login', body);
-}
+  }
 
-Logout(token): Observable<any>{
-  return this.http.get<any>(environment.API_URL + '/users/logout', {
+  Logout(id): Observable<any>{
+  return this.http.get<any>(environment.API_URL + `/users/logout/${id}`, {
     headers: {
-      Authorization: token
-    }
-  });
-}
+      Authorization: 'Bearer ' + localStorage.getItem('authToken')
+     }
+   });
+  }
 
 resetPassword(password, recoverToken) {
   return this.http.post(environment.API_URL + '/users/resetPassword', {recoverToken, password });
@@ -40,16 +41,7 @@ getUserById(id){
   return this.http.get<any>(environment.API_URL + `/users/userById/${id}`);
 }
 //#endregion
-getAllUserPost(){
-  return this.http.get<any>(environment.API_URL + '/users/getAllPostes');
-}
-getPostsById(id){
-  console.log(id);
-  return this.http.get<any>(environment.API_URL + `/users/getPostsById/${id}`);
-}
-getPostsByMail(mail){
-  return this.http.get<any>(environment.API_URL + `/users/mail${mail}`);
-}
+
 
 //#region  Posts
 getAllPost(){
@@ -59,15 +51,15 @@ getPostByUser(id){
   return this.http.get<any>(environment.API_URL + `/users/getPostsById/${id}`);
 }
 
-addPost(body: any){
-  console.log(body);
-  return this.http.post<any>(environment.API_URL + '/posts/addNew', body);
+addPost(postFormData: any){
+  console.log(postFormData);
+  return this.http.post<any>(environment.API_URL + '/posts/addNew', postFormData,
+  {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('authToken')
+    }
+  });
 }
-//     headers: {
-//       Authorization: 'Bearer' + token
-//     }
-//   });
-// }
 
 editPost(body: any, id){
   console.log(body);
@@ -85,12 +77,32 @@ deletePost(id){
   });
 }
 
+editProfile(body: any){
+  console.log(body);
+  return this.http.put<any>(environment.API_URL + `/users/updateProfile`, body, {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('authToken')
+    }
+  });
+}
+
+addLikePost(){
+
+}
+addLikeCommnet(){
+  
+}
+addComment(){
+  
+}
 //#endregion
-  getId(){
-  return this.idUserActual;
+  getActive(){
+  return this.userActive;
   }
-  setId(Id){
-  this.idUserActual = Id;
+  setActive(active){
+  this.userActive = active;
   }
+
+
 
 }

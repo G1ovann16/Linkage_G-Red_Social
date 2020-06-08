@@ -14,6 +14,14 @@ Post = {
   image: '',
   user_id: ''
 };
+profile = {
+  tag: '',
+  bio: '',
+  name: '',
+  city: '',
+  avatar: '',
+  lastName: ''
+};
 text: string;
 editText: string;
 allPersonalPost = [];
@@ -69,6 +77,18 @@ allPersonalPost = [];
   }
     getUser(){
       this.userService.getUserById(localStorage.getItem('User'))
+      .subscribe(
+        Posts => {
+          this.allPersonalPost = Posts;
+          console.log(Posts);
+
+      },
+       err => console.log(err)
+      );
+    }
+    editProfile(){
+
+      this.userService.editProfile(this.profile)
       .subscribe(
         Posts => {
           this.allPersonalPost = Posts;

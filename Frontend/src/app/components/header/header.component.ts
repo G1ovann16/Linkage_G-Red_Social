@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class HeaderComponent implements OnInit {
   public title = 'Linkage G';
   public User = {};
-
+  
   constructor(
               public usersService: UserService,
               private router: Router
@@ -32,13 +32,14 @@ export class HeaderComponent implements OnInit {
     );
   }
   logout(){
-    const token = localStorage.getItem('authToken');
-    this.usersService.Logout(token)
+    this.usersService.Logout(localStorage.getItem('User'))
     .subscribe((res: any) => {
       // this.notification.success('Successfully Logout', res['message']);
       localStorage.removeItem('authToken');
+      localStorage.removeItem('User');
       // this.usersService.setUser(null);
       console.log('deslogeado correct');
+      this.usersService.setActive(false);
       setTimeout(() => this.router.navigate(['/']), 2000);
     },
     (error: HttpErrorResponse) => {

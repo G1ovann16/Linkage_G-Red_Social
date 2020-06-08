@@ -4,6 +4,7 @@ import {UserService} from '../../services/user.service';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +31,7 @@ avatar: 'agiore@gmail.com'
     this.userService.getAllPost()
     .subscribe(
       Posts => {
+        console.log(Posts);
         this.allPost = Posts;
         for (let i = 0; i < this.allPost.length; i++) {
           this.comentList[i] = this.allPost[i].comments;
@@ -68,6 +70,25 @@ actualUser(id, index){
         },
          err => console.log(err)
         );
+      }
+      addPost(postForm, imageInput){
+        const postFormData = new FormData();
+        if (postForm.value.name)  postFormData.set('name', postForm.value.name);
+        if (postForm.value.description)  postFormData.set('description', postForm.value.description);
+        if (imageInput.files[0])  postFormData.set('image', imageInput.files[0]);
+        // console.log(post.value, image.value)
+        this.userService.addPost(postFormData)
+      .subscribe(
+        user => {
+          console.log(user);
+            postFormData.set('name', '');
+            postFormData.set('description', '');
+            postFormData.set('image', '');
+            console.log(postFormData.get('name'));
+          this.getAllPosts();
+      },
+       err => console.log(err)
+      );
       }
 
 }
