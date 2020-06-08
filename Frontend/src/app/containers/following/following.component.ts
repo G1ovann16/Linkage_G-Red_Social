@@ -24,7 +24,7 @@ export class FollowingComponent implements OnInit {
   ngOnInit(): void {
     console.log(localStorage.getItem('User'));
     // tslint:disable-next-line: radix
-    this.Post.user_id = parseInt( localStorage.getItem('User'));
+    this.Post.user_id = parseInt(localStorage.getItem('User'));
     this.getAllPosts();
   }
   addPost(){

@@ -17,17 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('users')->group(function () {
     Route::post('/register', 'UserController@register');
     Route::post('/login', 'UserController@login');
-    Route::get('/logout', 'UserController@logout');
     Route::get('/userById/{id}', 'UserController@getUserById');
     Route::middleware('auth:api')->group(function(){
+        Route::get('/logout/{id}', 'UserController@logout');
         Route::put('/update/{id}', 'UserController@update');
+        Route::post('/image', 'UserController@editImageProfile');
     });
 });
 
 Route::prefix('posts')->group(function () {
     Route::get('/getAll', 'PostController@show');
-    Route::post('/addNew', 'PostController@create');
     Route::middleware('auth:api')->group(function(){
+        Route::post('/addNew', 'PostController@create');
         Route::post('/addLike/{id}', 'LikeableController@addPostLike');
         Route::post('/addCommnet/{id}', 'LikeableController@addCommnetLike');
         Route::put('/update/{id}', 'PostController@update');

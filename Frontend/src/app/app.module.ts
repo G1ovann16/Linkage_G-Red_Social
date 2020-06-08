@@ -11,6 +11,7 @@ import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { FollowingComponent } from './containers/following/following.component';
+import { EditProfileComponent } from './containers/edit-profile/edit-profile.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    FollowingComponent
+    FollowingComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

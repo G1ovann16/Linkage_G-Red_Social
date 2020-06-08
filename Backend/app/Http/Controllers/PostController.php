@@ -25,9 +25,22 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        $body = $request->all(); 
-        $post = Post::create($body);   
-        return response($post, 201); 
+        try {
+            $body = $request->all();
+            $body['user_id'] = Auth::id();
+            if($request->has('image')){
+                $imageName = time() . '-' . request()->image->getClientOriginalName(); //time() es como Date.now()
+                request()->image->move('images/posts', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
+                $body['image'] = $imageName;    
+            }
+            $post = Post::create($body);
+            return response($post, 201);
+        } catch (\Exception $e) {
+            return response([
+                'message' => 'There was an error trying to register the user',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

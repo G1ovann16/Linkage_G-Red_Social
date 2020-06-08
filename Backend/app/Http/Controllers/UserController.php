@@ -48,10 +48,9 @@ class UserController extends Controller
         }
     }
    
-    public function logout(Request $request)
+    public function logout($id)
     {
-        // $request->user()->token()->revoke();
-        DB::table('oauth_access_tokens')->where('revoked',1)->delete();
+        DB::table('oauth_access_tokens')->where('user_id',$id)->delete();
         return response([
             'mensaje' => 'User successfully logged out'
         ]);
@@ -70,7 +69,23 @@ class UserController extends Controller
             ], 500);
         }
     }
-    public function update(Request $request, $id)
+   
+    public function editImageProfile(Request $request)
+    {
+        try {
+            $request->validate(['img' => 'required|image']);
+            $user = Auth::user();
+            $imageName = time() . '-' . request()->img->getClientOriginalName();
+            request()->img->move('images/users', $imageName);
+            $user->update(['avatar' => $imageName]);
+            return response($user);
+        } catch (\Exception $e) {
+            return response([
+                'error' => $e,
+            ], 500);
+        }
+    }          
+     public function update(Request $request, $id)
     {
         try {
             $body = $request->all();

@@ -1,6 +1,5 @@
 <div class="container">
     <div class="row">
-      <a routerLink="/profile" class="btn btn-post">profile</a>
       <div class="col-8">
          <!-- Content-card -->
          <div class="card mt-3" >
@@ -18,7 +17,7 @@
   
               </div>
               <div class="ml-auto p-2 bd-highlight">
-                Flex item
+                <i class="far fa-clock"></i> {{posts.created_at}}
               </div>
             </div>
             <img width="100%" src="https://www.fico.com/sites/default/files/2018-05/AdobeStock_159364568%20%281%29.jpeg" alt="">
@@ -27,7 +26,7 @@
               <a href="#" class="btn btn-add mr-2">
                 <i class="far fa-thumbs-up"> {{posts.likes.length}}</i>
               </a>
-              <a href="#" class="btn btn-post">Commnet  {{posts.comments.length}}</a>
+              <a href="#" class="btn btn-post">Comments  {{posts.comments.length}}</a>
             </div>
                 <div class="p-2"*ngFor="let commnet of comentList[i]">
                   <p class="comment-username">usuario que comento</p>

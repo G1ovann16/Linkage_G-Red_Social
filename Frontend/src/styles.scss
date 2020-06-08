@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'color.scss';
+
+a {
+    color: $title;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn-outline-success {
+    color: $red;
+    border-color:$red;
+}
+.btn-outline-success:hover {
+ background-color: $red;
+ color: white;
+ border: none;
+}
+
+
+body{
+    font-family: 'Noto Sans', sans-serif;
+    color: $main;
+}
+
+ul {
+    list-style: none;
+}
+.make-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-left{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.main-img {
+    border-radius:8px;
+}
+
+.comments-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.comments-username {
+    color: $title;
+}
+
+.btn-post {
+    background-color: $title;
+    color: white !important;
+}
+
+.btn-add{
+    background-color: white;
+    border-color: $title;
+    color: $title;
+}
+
+.btn-post:hover{
+    background-color: white;
+    border-color: $title;
+    color: $title;
+}
+.btn-add:hover{
+    background-color: $title;
+    color: white;
+}
+

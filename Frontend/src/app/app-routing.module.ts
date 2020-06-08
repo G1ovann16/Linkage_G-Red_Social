@@ -5,6 +5,7 @@ import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { FollowingComponent } from './containers/following/following.component';
+import { EditProfileComponent } from './containers/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'edit-profile', component: EditProfileComponent},
   {path: 'user/:lastName', component: FollowingComponent}
 ];
 
