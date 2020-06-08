@@ -30,7 +30,7 @@ Route::prefix('posts')->group(function () {
     Route::middleware('auth:api')->group(function(){
         Route::post('/addNew', 'PostController@create');
         Route::post('/addLike/{id}', 'LikeableController@addPostLike');
-        Route::post('/addCommnet/{id}', 'LikeableController@addCommnetLike');
+        Route::post('/addComment/{id}', 'LikeableController@addCommentLike');
         Route::put('/update/{id}', 'PostController@update');
         Route::put('/image/{id}', 'PostController@uploadImage');
         Route::delete('/delete/{id}', 'PostController@destroy');   

@@ -31,7 +31,7 @@ class LikeableController extends Controller
             ],201); 
         }
     }
-    public function addCommnetLike($id, Request $request)
+    public function addCommentLike($id, Request $request)
     {
         {   
             $user_id = Auth::id();

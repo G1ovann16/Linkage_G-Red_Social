@@ -9,42 +9,46 @@
                 <img class="avatar" src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
               </div>
               <div class="p-2 bd-highlight">
-                <!-- <a [routerLink]='["../userProfile", posts.user.id]' > -->
                     <p style="cursor: pointer;" (click)="actualUser(posts.user.id, i)">
-  
-                      {{posts.user.name}}
+
+                      {{posts.user?.name}}
                     </p>
   
               </div>
               <div class="ml-auto p-2 bd-highlight">
-                <i class="far fa-clock"></i> {{posts.created_at}}
+                <i class="far fa-clock"></i> {{data[i]}}
               </div>
             </div>
             
             <img width="100%" src="http://localhost:8000/images/posts/{{posts.image}}" alt="">
               <p class="mt-3"> {{posts.name}} </p>
-            <div class="d-flex justify-content-start mt-3">
-              <a href="#" class="btn btn-add mr-2">
-                <i class="far fa-thumbs-up"> {{posts.likes.length}}</i>
-              </a>
-              <a href="#" class="btn btn-post">Comments  {{posts.comments.length}}</a>
-            </div>
-                <div class="p-2"*ngFor="let commnet of comentList[i]">
-                  <p class="comment-username">usuario que comento</p>
-                  <p>{{commnet.description}}</p> 
-                  <a href="#" class="btn btn-add mr-2">
-                    <i class="far fa-thumbs-up"> 4</i>
-                  </a>
-                  <a href="#" class="btn btn-add mr-2">
-                    <i class="fa fa-edit"></i>
-                  </a>
-                  <a (click)="deletePost()" href="#" class="btn btn-add mr-2">
-                    <i class="fa fa-trash"></i>
-                  </a>
+              <p class="mt-3"> {{posts.description}} </p>
+              <div class="d-flex justify-content-start mt-3 mb-3">
+                <a style="cursor: pointer;" (click)="addClick(posts.id)" class="btn btn-add mr-2">
+                  <i class="far fa-thumbs-up"> {{posts.likes.length}}</i>
+                  </a> 
+                <a href="#" class="btn btn-post">Comments  {{posts.comments.length}}</a>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex flex-row mb-3">
+                  <div class="d-flex align-items-top">
+                    <div class="p-2">
+                      <img class="comments-avatar"
+                      src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg"
+                      alt="">
+                    </div>
+                    <div class="p-2" *ngFor="let comment of posts.comments">
+                      <p class="comment-username"> {{comment.user.name}}</p>
+                      <p>
+                        {{comment.description}}
+                      </p>
+                     
+                    </div>
+    
+                  </div>
                 </div>
-          </div>
-          <div class="card-footer">
-            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write here..." rows="1"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write here..."
+                  rows="1"></textarea>
           </div>
         </div>
       </div>

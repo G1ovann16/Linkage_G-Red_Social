@@ -86,20 +86,40 @@ editProfile(body: any){
   });
 }
 
-addLikePost(){
+addLikePost(body, post_id){
+      console.log(body, post_id, localStorage.getItem('authToken'))
+      return this.http.post<any>(environment.API_URL + `/posts/addLike/${post_id}`, body,
+    {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('authToken')
+      }
+    });
+  
+}
+addLikeComment(body, post_id){
+  console.log(body, post_id, localStorage.getItem('authToken'))
+  return this.http.post<any>(environment.API_URL + `/posts/addComment/${post_id}`, body,
+{
+  headers: {
+    Authorization: 'Bearer ' + localStorage.getItem('authToken')
+  }
+});
 
 }
-addLikeCommnet(){
-  
-}
-addComment(){
-  
+addComment(body){
+  console.log(body)
+  return this.http.post<any>(environment.API_URL + `/addComment`, body,
+{
+  headers: {
+    Authorization: 'Bearer ' + localStorage.getItem('authToken')
+  }
+});
 }
 //#endregion
-  getActive(){
+getActive(){
   return this.userActive;
   }
-  setActive(active){
+setActive(active){
   this.userActive = active;
   }
 

@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { from } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,25 @@ import { from } from 'rxjs';
 export class HomeComponent implements OnInit {
 allPost = [];
 user = [];
+editText: string;
+postComment: string;
 comentList = [];
+bodyLike = {
+  likeable_id: 1,
+  post_id: ''
+}
+bodyComment= {
+  user_id: 0,
+  post_id: 0,
+  description: ''
+}
+
 usuario = {
 name: '',
 description: '',
 avatar: 'agiore@gmail.com'
 };
+data = [];
   constructor(
     private userService: UserService,
     private router: Router
@@ -35,9 +49,9 @@ avatar: 'agiore@gmail.com'
         this.allPost = Posts;
         for (let i = 0; i < this.allPost.length; i++) {
           this.comentList[i] = this.allPost[i].comments;
+          this.data[i] = moment(this.allPost[i].created_at).fromNow();
         }
-        console.log(this.allPost, this.comentList);
-
+        console.log(this.allPost, this.comentList, this.data);
     },
      err => console.log(err)
     );
@@ -51,15 +65,25 @@ actualUser(id, index){
 }
 
 }
-    getUserById(){
-      this.userService.getUserById(3)
-      .subscribe(
-        user => {
-          console.log(user);
-      },
-       err => console.log(err)
-      );
-      }
+// tslint:disable-next-line: variable-name
+addClick(post_id: string){
+  this.bodyLike.post_id = post_id;
+    // tslint:disable-next-line: radix
+  this.userService.addLikePost(this.bodyLike, post_id)
+        .subscribe(res => {
+          console.log(res);
+          this.getAllPosts();
+        });
+}
+addClickComment(post_id: string){
+  this.bodyLike.post_id = post_id;
+    // tslint:disable-next-line: radix
+  this.userService.addLikeComment(this.bodyLike, post_id)
+        .subscribe(res => {
+          console.log(res);
+          this.getAllPosts();
+        });
+}
 
       deletePost(){
         this.userService.deletePost(3)
@@ -73,22 +97,36 @@ actualUser(id, index){
       }
       addPost(postForm, imageInput){
         const postFormData = new FormData();
-        if (postForm.value.name)  postFormData.set('name', postForm.value.name);
-        if (postForm.value.description)  postFormData.set('description', postForm.value.description);
-        if (imageInput.files[0])  postFormData.set('image', imageInput.files[0]);
-        // console.log(post.value, image.value)
+        if (postForm.value.name) {  postFormData.set('name', postForm.value.name); }
+        if (postForm.value.description) {  postFormData.set('description', postForm.value.description); }
+        if (imageInput.files[0]) {  postFormData.set('image', imageInput.files[0]); }
         this.userService.addPost(postFormData)
       .subscribe(
         user => {
           console.log(user);
-            postFormData.set('name', '');
-            postFormData.set('description', '');
-            postFormData.set('image', '');
-            console.log(postFormData.get('name'));
+          // postFormData.set('name', '');
+          // postFormData.set('description', '');
+          // postFormData.set('image', '');
+          console.log(postFormData.get('name'));
           this.getAllPosts();
       },
        err => console.log(err)
       );
+      }
+
+      createComment(e, post_id) {
+        if (e.key === 'Enter') {
+          // tslint:disable-next-line: radix
+          this.bodyComment.user_id = parseInt(localStorage.getItem('User'));
+          this.bodyComment.post_id = post_id;
+          this.bodyComment.description = this.postComment;
+          this.postComment = '';
+          this.userService.addComment(this.bodyComment)
+            .subscribe(res => {
+              console.log(res);
+              this.getAllPosts();
+            });
+        }
       }
 
 }
