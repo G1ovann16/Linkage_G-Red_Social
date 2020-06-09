@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { from } from 'rxjs';
 import * as moment from 'moment';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +39,7 @@ avatar: 'agiore@gmail.com'
 data = [];
   constructor(
     private userService: UserService,
+    private postService: PostService,
     private router: Router
   ) {}
   ngOnInit(): void {
@@ -47,7 +49,7 @@ data = [];
     // localStorage.setItem('nameUser', res['user']['name']);
   }
   getAllPosts(){
-    this.userService.getAllPost()
+    this.postService.getAllPost()
     .subscribe(
       Posts => {
         console.log(Posts);
@@ -74,7 +76,7 @@ actualUser(id, index){
 addClick(post_id: string){
   this.bodyLike.post_id = post_id;
     // tslint:disable-next-line: radix
-  this.userService.addLikePost(this.bodyLike, post_id)
+  this.postService.addLikePost(this.bodyLike, post_id)
         .subscribe(res => {
           console.log(res);
           this.getAllPosts();
@@ -83,7 +85,7 @@ addClick(post_id: string){
 addClickComment(post_id: string){
   this.bodyLike.post_id = post_id;
     // tslint:disable-next-line: radix
-  this.userService.addLikeComment(this.bodyLike, post_id)
+  this.postService.addLikeComment(this.bodyLike, post_id)
         .subscribe(res => {
           console.log(res);
           this.getAllPosts();
@@ -91,7 +93,7 @@ addClickComment(post_id: string){
 }
 
       deletePost(){
-        this.userService.deletePost(3)
+        this.postService.deletePost(3)
         .subscribe(
           user => {
             console.log(user);
@@ -105,7 +107,7 @@ addClickComment(post_id: string){
         if (postForm.value.name) {  postFormData.set('name', postForm.value.name); }
         if (postForm.value.description) {  postFormData.set('description', postForm.value.description); }
         if (imageInput.files[0]) {  postFormData.set('image', imageInput.files[0]); }
-        this.userService.addPost(postFormData)
+        this.postService.addPost(postFormData)
       .subscribe(
         user => {
           console.log(user);
@@ -126,7 +128,7 @@ addClickComment(post_id: string){
           this.bodyComment.post_id = post_id;
           this.bodyComment.description = this.postComment;
           this.postComment = '';
-          this.userService.addComment(this.bodyComment)
+          this.postService.addComment(this.bodyComment)
             .subscribe(res => {
               console.log(res);
               this.getAllPosts();

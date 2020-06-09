@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { PostService } from 'src/app/services/post.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ editText: string;
 allPersonalPost = [];
   constructor(
     public userService: UserService,
+    public postService: PostService,
     private router: Router
     ) { }
 
@@ -53,7 +55,7 @@ allPersonalPost = [];
     if (postForm.value.name) {  postFormData.set('name', postForm.value.name); }
     if (postForm.value.description) {  postFormData.set('description', postForm.value.description); }
     if (imageInput.files[0]) {  postFormData.set('image', imageInput.files[0]); }
-    this.userService.addPost(postFormData)
+    this.postService.addPost(postFormData)
   .subscribe(
     user => {
       console.log(user);
@@ -71,7 +73,7 @@ allPersonalPost = [];
     this.Post.image = 'https://www.axonize.com/wp-content/uploads/2019/03/AxonizeBlog_SinglePost_815x600_FacilityintoSmartBuilding.jpg';
     this.Post.user_id = localStorage.getItem('User');
     console.log(this.Post);
-    this.userService.editPost(this.Post, 3)
+    this.postService.editPost(this.Post, 3)
     .subscribe(
       user => {
         console.log(user);
@@ -81,7 +83,7 @@ allPersonalPost = [];
     );
   }
   deletePost(){
-    this.userService.deletePost(3)
+    this.postService.deletePost(3)
     .subscribe(
       user => {
         console.log(user);
@@ -109,7 +111,7 @@ allPersonalPost = [];
     addClick(post_id: string){
       this.bodyLike.post_id = post_id;
         // tslint:disable-next-line: radix
-      this.userService.addLikePost(this.bodyLike, post_id)
+      this.postService.addLikePost(this.bodyLike, post_id)
             .subscribe(res => {
               console.log(res);
               this.getUser();
@@ -118,7 +120,7 @@ allPersonalPost = [];
     addClickComment(post_id: string){
       this.bodyLike.post_id = post_id;
         // tslint:disable-next-line: radix
-      this.userService.addLikeComment(this.bodyLike, post_id)
+      this.postService.addLikeComment(this.bodyLike, post_id)
             .subscribe(res => {
               console.log(res);
               this.getUser();
@@ -132,7 +134,7 @@ allPersonalPost = [];
         this.bodyComment.post_id = post_id;
         this.bodyComment.description = this.postComment;
         this.postComment = '';
-        this.userService.addComment(this.bodyComment)
+        this.postService.addComment(this.bodyComment)
           .subscribe(res => {
             console.log(res);
             this.getUser();

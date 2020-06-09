@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,6 +13,7 @@ export class EditProfileComponent implements OnInit {
   allPersonalPost= [];
   constructor(
     public userService: UserService,
+    public postService: PostService,
     private router: Router
   ) { }
 
@@ -20,7 +22,7 @@ export class EditProfileComponent implements OnInit {
   }
   editProfile(body){
     // tslint:disable-next-line: radix
-    this.userService.editProfile(body.value, parseInt(localStorage.getItem('User')))
+    this.postService.editProfile(body.value, parseInt(localStorage.getItem('User')))
       .subscribe(res => {
         console.log(res);
         localStorage.setItem('nameUser', res['User']['name']);
