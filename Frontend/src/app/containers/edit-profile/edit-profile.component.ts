@@ -16,12 +16,14 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser();
+    this.getUser()
   }
   editProfile(body){
-    this.userService.editProfile(body.value, localStorage.getItem('User'))
+    // tslint:disable-next-line: radix
+    this.userService.editProfile(body.value, parseInt(localStorage.getItem('User')))
       .subscribe(res => {
         console.log(res);
+        localStorage.setItem('nameUser', res['User']['name']);
       });
 }
 getUser(){

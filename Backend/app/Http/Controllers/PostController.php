@@ -63,7 +63,7 @@ class PostController extends Controller
     public function show()
     {
         try {
-            $posts = Post::with('user','comments.likes', 'likes','comments.user')->get();//no saca los eliminados con deleted_at
+            $posts = Post::with('user','comments.likes', 'likes','comments.user')->orderBy('created_at', 'desc')->get();//no saca los eliminados con deleted_at
             return response($posts);
         } catch (\Exception $e) {
             return response([

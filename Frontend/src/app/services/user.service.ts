@@ -77,9 +77,9 @@ deletePost(id){
   });
 }
 
-editProfile(body: any, userId){
-  console.log(body);
-  return this.http.put<any>(environment.API_URL + `/users/update`, body, {
+editProfile(body: any, id){
+  console.log(body, id, localStorage.getItem('authToken'));
+  return this.http.put<any>(environment.API_URL + `/users/update/${id}`, body, {
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('authToken')
     }
