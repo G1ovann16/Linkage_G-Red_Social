@@ -116,12 +116,6 @@ addComment(body){
 });
 }
 //#endregion
-getActive(){
-  return this.userActive;
-  }
-setActive(active){
-  this.userActive = active;
-  }
 
   getName(){
     return localStorage.getItem('nameUser');
