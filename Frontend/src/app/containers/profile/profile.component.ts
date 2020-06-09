@@ -105,18 +105,7 @@ allPersonalPost = [];
        err => console.log(err)
       );
     }
-    editProfile(){
 
-      this.userService.editProfile(this.profile)
-      .subscribe(
-        Posts => {
-          this.allPersonalPost = Posts;
-          console.log(Posts);
-
-      },
-       err => console.log(err)
-      );
-    }
     addClick(post_id: string){
       this.bodyLike.post_id = post_id;
         // tslint:disable-next-line: radix

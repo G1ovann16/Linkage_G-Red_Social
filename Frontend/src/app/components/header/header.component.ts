@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
       localStorage.removeItem('nameUser');
       // this.usersService.setUser(null);
       console.log('deslogeado correct');
-      this.usersService.setActive(false);
       setTimeout(() => this.router.navigate(['/']), 2000);
     },
     (error: HttpErrorResponse) => {

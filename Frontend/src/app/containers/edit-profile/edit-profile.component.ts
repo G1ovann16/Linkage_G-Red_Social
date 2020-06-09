@@ -9,23 +9,32 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-
+  allPersonalPost= [];
   constructor(
     public userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.getUser();
   }
-  editProfile(){
-    this.userService.editProfile('body')
-    .subscribe(() => {
-        // this.userService.setActive(true);
-        setTimeout(() => this.router.navigate(['/profile']), 2000);
-      },
-      (error: HttpErrorResponse) => {
+  editProfile(body){
+    this.userService.editProfile(body.value, localStorage.getItem('User'))
+      .subscribe(res => {
+        console.log(res);
       });
-
 }
-  
+getUser(){
+  this.userService.getUserById(localStorage.getItem('User'))
+  .subscribe(
+    Posts => {
+      this.allPersonalPost = Posts;
+
+      console.log(Posts);
+
+  },
+   err => console.log(err)
+  );
+}
+
 }
