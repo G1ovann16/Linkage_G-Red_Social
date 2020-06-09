@@ -52,6 +52,13 @@ editProfile(body: any, id){
     }
   });
 }
+editImageProfile(image: FormData){
+  return this.http.post<any>(environment.API_URL + `/users/updateProfile/`, image, {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('authToken')
+    }
+  });
+}
 
 addLikePost(body, post_id){
       console.log(body, post_id, localStorage.getItem('authToken'));

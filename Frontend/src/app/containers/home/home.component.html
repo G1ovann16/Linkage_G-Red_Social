@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-8">
          <!-- Content-card -->
-         <div class="card mt-3" >
+         <div class="card mt-3" #scrollMe [scrollTop]="scrollMe.scrollHeight"  >
           <div class="card-body" *ngFor="let posts of allPost | paginate: { itemsPerPage: 6, currentPage: p } let i = index;">
             <div class="d-flex bd-highlight align-items-center">
               <div class="card-title p-2 bd-highlight">

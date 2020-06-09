@@ -111,14 +111,11 @@ addClickComment(post_id: string){
       .subscribe(
         user => {
           console.log(user);
-          // postFormData.set('name', '');
-          // postFormData.set('description', '');
-          // postFormData.set('image', '');
-          console.log(postFormData.get('name'));
           this.getAllPosts();
       },
        err => console.log(err)
       );
+      postForm.reset();
       }
 
       createComment(e, post_id) {

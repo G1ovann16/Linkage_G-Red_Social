@@ -20,8 +20,13 @@ class CreateLikeablesTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
+        Schema::create('follower', function (Blueprint $table) {
+            $table->id();
+            $table->integer('followed_id');
+            $table->string('follower_id');
+            $table->timestamps();
+        });
     }
-
     /**
      * Reverse the migrations.
      *

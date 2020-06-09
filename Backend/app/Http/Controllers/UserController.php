@@ -58,7 +58,7 @@ class UserController extends Controller
     public function getUserById($id)
     {
         try {
-            $user = User::with('post.likes','post.comments.likes','post.comments.user')->find($id);
+            $user = User::with('post.likes','post.comments.likes','following','post.comments.user')->find($id);
             return response([
                 'message' => 'list posts by user',
                 'user' => $user
@@ -71,9 +71,8 @@ class UserController extends Controller
     }
     public function createFollower(Request $request)
     {
-        $body = $request->all(); 
-        $follower = User::create($body);
-        dd($fo);
+
+        $follower = DB::table('follower')->insert(['followed_id'=>$request->followed_id,'follower_id'=>$request->follower_id]);
         return response($follower, 201);  
     }
     public function editImageProfile(Request $request)

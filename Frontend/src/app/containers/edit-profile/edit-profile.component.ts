@@ -10,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  allPersonalPost= [];
+  allPersonalPost = [];
   constructor(
     public userService: UserService,
     public postService: PostService,
@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
   }
   editProfile(body){
     // tslint:disable-next-line: radix
@@ -26,7 +26,9 @@ export class EditProfileComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         localStorage.setItem('nameUser', res['User']['name']);
+        this.getUser();
       });
+      body.reset();
 }
 getUser(){
   this.userService.getUserById(localStorage.getItem('User'))
@@ -40,5 +42,15 @@ getUser(){
    err => console.log(err)
   );
 }
+  editImage(imageInput){
+    const imageFormData = new FormData();
+    if (imageInput.files[0]) {  imageFormData.set('img', imageInput.files[0]); }
+  // tslint:disable-next-line: radix
+  this.postService.editImageProfile(imageFormData)
+    .subscribe(res => {
+      this.getUser();
+    });
+}
+
 
 }
