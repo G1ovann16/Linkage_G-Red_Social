@@ -3,13 +3,13 @@
       <div class="col-8">
          <!-- Content-card -->
          <div class="card mt-3" >
-          <div class="card-body" *ngFor="let posts of allPost; let i = index;">
+          <div class="card-body" *ngFor="let posts of allPost | paginate: { itemsPerPage: 6, currentPage: p } let i = index;">
             <div class="d-flex bd-highlight align-items-center">
               <div class="card-title p-2 bd-highlight">
                 <img class="avatar" src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
               </div>
               <div class="p-2 bd-highlight">
-                    <p style="cursor: pointer;" (click)="actualUser(posts.user.id, i)">
+                    <p class="username" style="cursor: pointer;" (click)="actualUser(posts.user.id, i)">
 
                       {{posts.user?.name}}
                     </p>
@@ -21,7 +21,7 @@
             </div>
             
             <img width="100%" src="http://localhost:8000/images/posts/{{posts.image}}" alt="">
-              <p class="mt-3"> {{posts.name}} </p>
+              <p class="post-title mt-3"> {{posts.name}} </p>
               <p class="mt-3"> {{posts.description}} </p>
               <div class="d-flex justify-content-start mt-3 mb-3">
                 <a style="cursor: pointer;" (click)="addClick(posts.id)" class="btn btn-add mr-2">
@@ -30,48 +30,53 @@
                 <a href="#" class="btn btn-post">Comments  {{posts.comments.length}}</a>
               </div>
               <div class="card-footer">
+                <div class="p-2" *ngFor="let comment of posts.comments">
                 <div class="d-flex flex-row mb-3">
                   <div class="d-flex align-items-top">
                     <div class="p-2">
                       <img class="comments-avatar"
-                      src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg"
+                      src="{{comment.user.avatar}}"
                       alt="">
                     </div>
-                    <div class="p-2" *ngFor="let comment of posts.comments">
+                    <div class="ml-3">
                       <p class="comment-username"> {{comment.user.name}}</p>
-                      <p>
-                        {{comment.description}}
-                      </p>
+                      <p>{{comment.description}}</p>
+                    </div>
                      
                     </div>
     
                   </div>
                 </div>
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write here..."
-                  rows="1"></textarea>
+                <input [(ngModel)]="postComment" (keyup)="createComment($event, posts['id'])" class="form-control mt-3 w-100" placeholder="Write here...">
           </div>
         </div>
-      </div>
-      <div class="col-4 ">
-              <!-- Post-card -->
-              <div class="card mt-3" >
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Create Post
-                  </h5>
-                  <form #postForm="ngForm" (submit)="addPost(postForm, imageInput)">
-                    <input type="text" ngModel name="name">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" ngModel name="description" placeholder="Write here..." rows="3"></textarea>
-                    <div class="d-flex justify-content-end mt-3">
-                      <input type="file" ngModel name="image" #imageInput class="btn btn-add mr-2" >
-                        <i class="fas fa-camera"></i>
-                        <button type="submit" class="btn btn-post">Publish</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
+        <div class="col-4 ">
+                <!-- Post-card -->
+                <div class="card mt-3" >
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Create Post
+                    </h5>
+                    <form #postForm="ngForm" (submit)="addPost(postForm, imageInput)">
+                      <input class="form-control mb-2" type="text" placeholder="Enter title" ngModel name="name">
+                      <textarea class="form-control" id="exampleFormControlTextarea1" ngModel name="description" placeholder="Write here..." rows="3"></textarea>
+                      <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" ngModel name="image" #imageInput class="custom-file-input" id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label mt-2" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+                      <div class="d-flex justify-content-start mt-5">
+                          <button type="submit" class="btn btn-post">Publish</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+        </div>
   </div>
   
   

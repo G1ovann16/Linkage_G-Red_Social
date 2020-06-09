@@ -18,6 +18,7 @@ Route::prefix('users')->group(function () {
     Route::post('/register', 'UserController@register');
     Route::post('/login', 'UserController@login');
     Route::get('/userById/{id}', 'UserController@getUserById');
+    Route::post('/addFollower', 'UserController@createFollower');
     Route::middleware('auth:api')->group(function(){
         Route::get('/logout/{id}', 'UserController@logout');
         Route::put('/update/{id}', 'UserController@update');
@@ -36,5 +37,4 @@ Route::prefix('posts')->group(function () {
         Route::delete('/delete/{id}', 'PostController@destroy');   
     });
 });
-
 Route::post('/addComment', 'CommentController@create');

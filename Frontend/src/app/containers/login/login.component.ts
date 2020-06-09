@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         .subscribe((res: HttpResponse<object>) => {
           localStorage.setItem('authToken', res['user']['token']);
           localStorage.setItem('User', res['user']['id']);
+          localStorage.setItem('nameUser', res['user']['name']);
           setTimeout(() => this.router.navigate(['/home']), 2000);
         },
           (error: HttpErrorResponse) => {

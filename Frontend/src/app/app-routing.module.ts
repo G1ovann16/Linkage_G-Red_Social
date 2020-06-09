@@ -6,10 +6,13 @@ import { RegisterComponent } from './containers/register/register.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { FollowingComponent } from './containers/following/following.component';
 import { EditProfileComponent } from './containers/edit-profile/edit-profile.component';
-
+import { LandingComponent } from './containers/landing/landing.component';
+import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: '', component: LandingComponent},
+  {path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},

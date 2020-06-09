@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
       // this.notification.success('Successfully Logout', res['message']);
       localStorage.removeItem('authToken');
       localStorage.removeItem('User');
+      localStorage.removeItem('nameUser');
       // this.usersService.setUser(null);
       console.log('deslogeado correct');
       this.usersService.setActive(false);

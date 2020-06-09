@@ -13,6 +13,8 @@ import { ProfileComponent } from './containers/profile/profile.component';
 import { FollowingComponent } from './containers/following/following.component';
 import { EditProfileComponent } from './containers/edit-profile/edit-profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { LandingComponent } from './containers/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ProfileComponent,
     FollowingComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

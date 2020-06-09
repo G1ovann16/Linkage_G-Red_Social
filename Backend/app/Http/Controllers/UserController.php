@@ -69,7 +69,13 @@ class UserController extends Controller
             ], 500);
         }
     }
-   
+    public function createFollower(Request $request)
+    {
+        $body = $request->all(); 
+        $follower = User::create($body);
+        dd($fo);
+        return response($follower, 201);  
+    }
     public function editImageProfile(Request $request)
     {
         try {

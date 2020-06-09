@@ -13,7 +13,9 @@ import * as moment from 'moment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-allPost = [];
+  p = 1;
+
+  allPost = [];
 user = [];
 editText: string;
 postComment: string;
@@ -21,12 +23,12 @@ comentList = [];
 bodyLike = {
   likeable_id: 1,
   post_id: ''
-}
-bodyComment= {
+};
+bodyComment = {
   user_id: 0,
   post_id: 0,
   description: ''
-}
+};
 
 usuario = {
 name: '',
@@ -40,6 +42,9 @@ data = [];
   ) {}
   ngOnInit(): void {
     this.getAllPosts();
+    // localStorage.setItem('authToken', res['user']['token']);
+    // localStorage.setItem('User', res['user']['id']);
+    // localStorage.setItem('nameUser', res['user']['name']);
   }
   getAllPosts(){
     this.userService.getAllPost()

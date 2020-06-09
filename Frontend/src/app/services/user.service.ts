@@ -87,7 +87,7 @@ editProfile(body: any){
 }
 
 addLikePost(body, post_id){
-      console.log(body, post_id, localStorage.getItem('authToken'))
+      console.log(body, post_id, localStorage.getItem('authToken'));
       return this.http.post<any>(environment.API_URL + `/posts/addLike/${post_id}`, body,
     {
       headers: {
@@ -97,7 +97,7 @@ addLikePost(body, post_id){
   
 }
 addLikeComment(body, post_id){
-  console.log(body, post_id, localStorage.getItem('authToken'))
+  console.log(body, post_id, localStorage.getItem('authToken'));
   return this.http.post<any>(environment.API_URL + `/posts/addComment/${post_id}`, body,
 {
   headers: {
@@ -123,6 +123,8 @@ setActive(active){
   this.userActive = active;
   }
 
-
+  getName(){
+    return localStorage.getItem('nameUser');
+    }
 
 }

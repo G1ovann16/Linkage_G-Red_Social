@@ -51,8 +51,9 @@ ul {
     border-radius: 50%;
 }
 
-.comments-username {
+.comment-username {
     color: $title;
+    font-weight: 700;
 }
 
 .btn-post {
@@ -76,3 +77,19 @@ ul {
     color: white;
 }
 
+.red-icon {
+    color: $red;
+}
+
+.ngx-pagination .current {
+    background: $title !important;
+}
+
+.username {
+    color: $title;
+}
+
+.post-title {
+    font-weight: 700;
+    color: $title;
+}

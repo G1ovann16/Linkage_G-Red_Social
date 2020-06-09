@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit {
 
     {
       console.log(registerform.value);
+      localStorage.setItem('nameUser', registerform.value.name);
+
       this.userService.setNewRegister(registerform.value)
       .subscribe(() => {
           // this.userService.setActive(true);

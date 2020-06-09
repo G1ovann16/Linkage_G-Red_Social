@@ -51,4 +51,13 @@ class User extends Authenticatable
     {
        return $this->belongsTo('\App\Likeable');
     }
+    public function following()
+    {
+        return $this->belongsToMany(
+            self::class,
+            'followers',
+            'followed_id',
+            'follower_id'
+        );
+    }
 }

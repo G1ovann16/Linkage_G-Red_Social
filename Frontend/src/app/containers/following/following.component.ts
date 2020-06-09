@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-following',
@@ -7,75 +10,123 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./following.component.scss']
 })
 export class FollowingComponent implements OnInit {
-  text: string;
   Post = {
     name: '',
     image: '',
-    user_id: 0
+    user_id: ''
   };
-  usuario: {};
-  clave: '';
-  key = 0;
+  postComment = '';
+  bodyLike = {
+    likeable_id: 1,
+    post_id: ''
+  };
+  bodyComment = {
+    user_id: 0,
+    post_id: 0,
+    description: ''
+  };
+  data = [];
+  profile = {
+    tag: '',
+    bio: '',
+    name: '',
+    city: '',
+    avatar: '',
+    lastName: ''
+  };
+  text: string;
+  editText: string;
   allPersonalPost = [];
-  constructor(
-    private userService: UserService
-  ) { }
-
-  ngOnInit(): void {
-    console.log(localStorage.getItem('User'));
-    // tslint:disable-next-line: radix
-    this.Post.user_id = parseInt(localStorage.getItem('User'));
-    this.getAllPosts();
-  }
-  addPost(){
-    this.Post.name = this.text;
-    this.Post.image = 'https://www.axonize.com/wp-content/uploads/2019/03/AxonizeBlog_SinglePost_815x600_FacilityintoSmartBuilding.jpg';
-    console.log(this.Post);
-    const token = localStorage.getItem('authToken');
-    this.userService.addPost(this.Post)
+    constructor(
+      public userService: UserService,
+      private router: Router
+      ) { }
+  
+    ngOnInit(): void {
+      console.log(localStorage.getItem('User'));
+      // tslint:disable-next-line: radix
+      // this.getAllPosts();
+      this.getUser();
+    }
+    addPost(postForm, imageInput){
+      const postFormData = new FormData();
+      if (postForm.value.name) {  postFormData.set('name', postForm.value.name); }
+      if (postForm.value.description) {  postFormData.set('description', postForm.value.description); }
+      if (imageInput.files[0]) {  postFormData.set('image', imageInput.files[0]); }
+      this.userService.addPost(postFormData)
     .subscribe(
       user => {
         console.log(user);
-        this.getAllPosts();
-    },
-     err => console.log(err)
-    );
-  }
-
-  editPost(){
-    this.Post.name = this.text;
-    this.Post.image = 'https://www.axonize.com/wp-content/uploads/2019/03/AxonizeBlog_SinglePost_815x600_FacilityintoSmartBuilding.jpg';
-    console.log(this.Post);
-    this.userService.editPost(this.Post, 3)
-    .subscribe(
-      user => {
-        console.log(user);
-        this.getAllPosts();
-    },
-     err => console.log(err)
-    );
-  }
-  deletePost(){
-    this.userService.deletePost(3)
-    .subscribe(
-      user => {
-        console.log(user);
-        this.getAllPosts();
-    },
-     err => console.log(err)
-    );
-  }
-  getAllPosts(){
-    this.userService.getPostByUser(localStorage.getItem('userActual'))
-    .subscribe(
-      Posts => {
-        this.allPersonalPost = Posts.posts;
-        console.log(this.allPersonalPost);
-
+        postFormData.set('name', '');
+        postFormData.set('description', '');
+        postFormData.set('image', '');
+        console.log(postFormData.get('name'));
+        this.getUser();
     },
      err => console.log(err)
     );
     }
-
-}
-
+    
+    deletePost(){
+      this.userService.deletePost(3)
+      .subscribe(
+        user => {
+          console.log(user);
+          this.getUser();
+      },
+       err => console.log(err)
+      );
+    }
+      getUser(){
+        this.userService.getUserById(localStorage.getItem('userActual'))
+        .subscribe(
+          Posts => {
+            this.allPersonalPost = Posts;
+            for (let i = 0; i < Posts.user.post.length; i++) {
+              console.log(Posts.user.post[i]?.created_at);
+              this.data[i] = moment(Posts.user.post[i]?.created_at).fromNow();
+            }
+            console.log(Posts);
+  
+        },
+         err => console.log(err)
+        );
+      }
+      
+      addClick(post_id: string){
+        this.bodyLike.post_id = post_id;
+          // tslint:disable-next-line: radix
+        this.userService.addLikePost(this.bodyLike, post_id)
+              .subscribe(res => {
+                console.log(res);
+                this.getUser();
+              });
+      }
+      addClickComment(post_id: string){
+        this.bodyLike.post_id = post_id;
+          // tslint:disable-next-line: radix
+        this.userService.addLikeComment(this.bodyLike, post_id)
+              .subscribe(res => {
+                console.log(res);
+                this.getUser();
+              });
+      }
+  
+      createComment(e, post_id) {
+        if (e.key === 'Enter') {
+          // tslint:disable-next-line: radix
+          this.bodyComment.user_id = parseInt(localStorage.getItem('User'));
+          this.bodyComment.post_id = post_id;
+          this.bodyComment.description = this.postComment;
+          this.postComment = '';
+          this.userService.addComment(this.bodyComment)
+            .subscribe(res => {
+              console.log(res);
+              this.getUser();
+            });
+        }
+      }
+  
+  
+  }
+  
