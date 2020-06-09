@@ -7,7 +7,7 @@ import { ProfileComponent } from './containers/profile/profile.component';
 import { FollowingComponent } from './containers/following/following.component';
 import { EditProfileComponent } from './containers/edit-profile/edit-profile.component';
 import { LandingComponent } from './containers/landing/landing.component';
-import { AuthGuard } from "./auth.guard";
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},

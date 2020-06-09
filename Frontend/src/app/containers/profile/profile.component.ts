@@ -3,7 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { PostService } from 'src/app/services/post.service';
-
+import { Alert } from 'antd';
 
 @Component({
   selector: 'app-profile',
