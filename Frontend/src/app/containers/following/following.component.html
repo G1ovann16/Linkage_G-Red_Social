@@ -13,7 +13,7 @@
           <p>{{allPersonalPost['user']?.bio}}</p>
           <p><i class="far fa-clipboard red-icon"></i> Posts ({{allPersonalPost['user']?.post.length}})</p>
           <p><i class="fas fa-users red-icon"></i> Friends ({{allPersonalPost['user']?.post.length}})</p>
-          <h6><a class="btn btn-add" routerLink="/edit-profile"><i class="fa fa-users"></i> Add friend</a></h6>
+          <h6><a class="btn btn-add" (click)="addFriends()"><i class="fa fa-users"></i> Add friend</a></h6>
         </div>
       </div>
     </div>

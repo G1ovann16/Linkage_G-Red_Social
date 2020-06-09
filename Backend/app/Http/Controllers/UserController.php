@@ -71,7 +71,7 @@ class UserController extends Controller
     }
     public function createFollower(Request $request)
     {
-
+        
         $follower = DB::table('follower')->insert(['followed_id'=>$request->followed_id,'follower_id'=>$request->follower_id]);
         return response($follower, 201);  
     }

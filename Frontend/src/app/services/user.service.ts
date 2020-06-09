@@ -37,6 +37,12 @@ resetPassword(password, recoverToken) {
 getUserById(id){
   return this.http.get<any>(environment.API_URL + `/users/userById/${id}`);
 }
+
+addFriends(body) {
+  console.log(body)
+  return this.http.post(environment.API_URL + '/users/addFollower', body);
+
+}
 //#endregion
 
 

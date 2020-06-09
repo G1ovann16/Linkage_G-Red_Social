@@ -27,13 +27,9 @@ export class FollowingComponent implements OnInit {
     description: ''
   };
   data = [];
-  profile = {
-    tag: '',
-    bio: '',
-    name: '',
-    city: '',
-    avatar: '',
-    lastName: ''
+  bodyFollower = {
+  followed_id: localStorage.getItem('User'),
+  follower_id: localStorage.getItem('userActual')
   };
   text: string;
   editText: string;
@@ -50,35 +46,6 @@ export class FollowingComponent implements OnInit {
       // this.getAllPosts();
       this.getUser();
     }
-    addPost(postForm, imageInput){
-      const postFormData = new FormData();
-      if (postForm.value.name) {  postFormData.set('name', postForm.value.name); }
-      if (postForm.value.description) {  postFormData.set('description', postForm.value.description); }
-      if (imageInput.files[0]) {  postFormData.set('image', imageInput.files[0]); }
-      this.postService.addPost(postFormData)
-    .subscribe(
-      user => {
-        console.log(user);
-        postFormData.set('name', '');
-        postFormData.set('description', '');
-        postFormData.set('image', '');
-        console.log(postFormData.get('name'));
-        this.getUser();
-    },
-     err => console.log(err)
-    );
-    }
-    
-    deletePost(){
-      this.postService.deletePost(3)
-      .subscribe(
-        user => {
-          console.log(user);
-          this.getUser();
-      },
-       err => console.log(err)
-      );
-    }
       getUser(){
         this.userService.getUserById(localStorage.getItem('userActual'))
         .subscribe(
@@ -89,16 +56,22 @@ export class FollowingComponent implements OnInit {
               this.data[i] = moment(Posts.user.post[i]?.created_at).fromNow();
             }
             console.log(Posts);
-  
         },
          err => console.log(err)
         );
       }
-      
+
       addClick(post_id: string){
         this.bodyLike.post_id = post_id;
           // tslint:disable-next-line: radix
         this.postService.addLikePost(this.bodyLike, post_id)
+              .subscribe(res => {
+                console.log(res);
+                this.getUser();
+              });
+      }
+      addFriends(){
+        this.userService.addFriends(this.bodyFollower)
               .subscribe(res => {
                 console.log(res);
                 this.getUser();

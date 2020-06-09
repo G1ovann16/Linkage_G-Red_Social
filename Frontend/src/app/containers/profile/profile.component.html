@@ -12,7 +12,7 @@
             <h6><i class="fas fa-globe red-icon"></i> Valencia, Espana</h6>
             <p>{{allPersonalPost['user']?.bio}}</p>
             <p><i class="far fa-clipboard red-icon"></i> Posts ({{allPersonalPost['user']?.post.length}})</p>
-            <p><i class="fas fa-users red-icon"></i> Friends ({{allPersonalPost['user']?.post.length}})</p>
+            <p><i class="fas fa-users red-icon"></i> Friends ({{allPersonalPost['user']['following']?.length}})</p>
             <h6><a class="btn btn-add" routerLink="/edit-profile"><i class="fa fa-edit"></i> Edit Profile</a></h6>
           </div>
         </div>
@@ -22,35 +22,17 @@
             <h5 class="card-title">
               My Friends
             </h5>
-            <div class="d-flex align-items-top">
+            <div class="d-flex align-items-top" *ngFor="let friends of allPersonalPost['user']['following'] ">
               <div class="p-2">
                 <img class="comments-avatar"
-                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+                  src="{{friends.avatar}}" alt="">
               </div>
               <div class="p-2">
-                <p class="comment-username">sofiiii y la borde</p>
+                <p class="comment-username">{{friends.name}}</p>
               </div>
             </div>
             <hr>
-            <div class="d-flex align-items-top">
-              <div class="p-2">
-                <img class="comments-avatar"
-                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
-              </div>
-              <div class="p-2">
-                <p class="comment-username">Martin Pinto</p>
-              </div>
-            </div>
-            <hr>
-            <div class="d-flex align-items-top">
-              <div class="p-2">
-                <img class="comments-avatar"
-                  src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
-              </div>
-              <div class="p-2">
-                <p class="comment-username">Luco Feliu</p>
-              </div>
-            </div>
+          
           </div>
         </div>
   
