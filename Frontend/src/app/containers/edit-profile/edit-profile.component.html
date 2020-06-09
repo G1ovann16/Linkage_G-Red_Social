@@ -7,11 +7,11 @@
             <img class="main-avatar"
               src="img.jpg" alt="">
             <h5 class="card-title mt-3">
-                Martin Pinto
+                {{allPersonalPost['user'].name}}
             </h5>
-            <h6><i class="fas fa-globe"></i> Valencia, Espana</h6>
-            <p>Best UX/UI Designer Ever</p>
-            <p><i class="far fa-clipboard"></i> Posts (133)</p>
+            <h6><i class="fas fa-globe"></i>  {{allPersonalPost['user'].city}}</h6>
+            <p>  {{allPersonalPost['user'].tag}}</p>
+            <p><i class="far fa-clipboard"></i> post ({{allPersonalPost['user'].post.length}})</p>
             <p><i class="fas fa-users"></i> Friends (530)</p>
           </div>
         </div>
@@ -24,45 +24,40 @@
             <h5 class="card-title">
                 Edit Your Profile
             </h5>
-            <form>
+            <form #profileForm="ngForm">
                 <div class="row">
                   <div class="col">
                     <label>First Name</label>
-                    <input type="text" class="form-control" value="Martin">
+                    <input type="text" class="form-control" ngModel name="name" placeholder="Enter your name">
                   </div>
                   <div class="col">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" value="Pinto">
+                    <input type="text" class="form-control" ngModel name="lastName" placeholder="Enter your last name">
                   </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col">
                       <label>Tag</label>
-                      <input type="text" class="form-control" value="UX/UI Designer">
+                      <input type="text" class="form-control" ngModel name="tag" placeholder="Enter your tag">
                     </div>
                     <div class="col">
                       <label>City</label>
-                      <input type="text" class="form-control" value="Pinto">
+                      <input type="text" class="form-control" ngModel name="city" placeholder="Enter your city">
                     </div>
                   </div>
                   <div class="row mt-3">
                     <div class="col">
                       <label>Describe Yourself</label>
-                      <textarea type="text" class="form-control" value="UX/UI Designer"></textarea>
+                      <textarea type="text" class="form-control" ngModel name="bio" placeholder="Enter your name"></textarea>
                     </div>
                   </div>
                   <label class="mt-3">Profile Image</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01"
-                      aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                              <div class="input-group-prepend">
-                                <span (click)="editProfile()" class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                              </div>
-                  </div>
-                  <button class="btn btn-outline-success">Update profile</button>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01"></label>
+                      </div>
+                    <a style="cursor: pointer;" (click)="editProfile(profileForm)" class="btn btn-outline-success mt-3">Save Changes</a>
               </form>
           </div>
         </div>
