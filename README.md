@@ -1,15 +1,13 @@
-## Comenzando 🚀
-
-_El presente proyecto está enfocado al público; el mismo se tratará de una Red Social, en la cuál el cliente podrá realizar publicaciones con la temática que crea conveniente, podra hacerse de amigos, teniendo esto como fin o al menos uno de ellos, que se sienta en su zona de confort y pueda apreciar a personas que piensan o crean de manera similar. Se le dará la opcion de editar su pérfil; al cual tendra asceso todo aquel que lo quiera seguir. Adelante con su PUBLICACIÓN._
+### About Project 🚀
+_This project is focused on the public; it will be a Social Network, in which the client will be able to make publications with the theme that he deems appropriate, he will be able to make friends, having this as an end or at least one of them, who sits in his comfort zone and can appreciate people who think or create similarly. You will be given the option to edit your profile; to which anyone who wants to follow will have access. Go ahead with your PUBLICATION._
     ![LINKAGE-G LANDING](http://glandaburo.online/landing.png)
       **PAGE Landing**
 
 
   ### FRONTEND
 
-  ### Instalación de este proyecto 🔧
-https://github.com/G1ovann16/Linkage_G-Red_Social
-_El proposito de este proyecto es que le sea util al usuario y que sirva de inspiracion a otros desarrolladores para poder colaborar en est mundo digital. A continuacio nse les dara los pasos ecsarios para dejarle listo su ambiente de trabajo._
+  ###Installation of this project 🔧
+ _The purpose of this project is for it to be useful to the user and to inspire other developers to collaborate in this digital world. Next, I will take the necessary steps to get your work environment ready._
 
 ### Instalación 🔧    
 ``` npm install
@@ -22,7 +20,7 @@ _El proposito de este proyecto es que le sea util al usuario y que sirva de insp
 ## DEVELOPED WITH 🛠️
 
 
-* [Angular CLI](https://github.com/angular/angular-cli) version 9.1. _Este proyecto fue generado con esta herramienta, en el enlace puede acceder a su documentación. Es válido destacar que se generan con la misma los diferentes componentes, servicios, contenedores, etc que se utilizaron_
+* [Angular CLI](https://github.com/angular/angular-cli) version 9.1. _This project was generated with this tool, in the link you can access its documentation. It is worth noting that the different components, services, containers, etc. That were used are generated with it._
 *[Boostrap](https://getbootstrap.com/docs/4.5/getting-started) _Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page._
  ## Extras
 *[AntDesign](https://ng.ant.design/docs/getting-started/) _Ant Design of Angular is dedicated to providing a good development experience for programmers._
@@ -35,8 +33,8 @@ _El proposito de este proyecto es que le sea util al usuario y que sirva de insp
   
 
 ### Instalación 🔧  
-_Para la utilizacion de este proyecto usted debera recurrir a la siguiente ruta_  
-*[LINKAG-G](https://github.com/G1ovann16/Linkage_G-Red_Social); _en el mismo se puede descargar o hacer un clon del repositorio una vez obtenido solo deberia bastarle con el siguiente comando:_
+_For the use of this project you must follow the route_
+*[LINKAG-G](https://github.com/G1ovann16/Linkage_G-Red_Social); _In the same time you can download or make a clone of the repository once obtained, the following command should suffice:_
 
 ``` npm install
     ng serve --o
@@ -60,7 +58,7 @@ _Para la utilizacion de este proyecto usted debera recurrir a la siguiente ruta_
     }
 
 ``` 
-_En este pequeño código se ha ce uan peticion GET a la base de datos donde se obtienen todos los creados post por usuarios, asi como sus respectivos likes y comentarios ._
+_In this small code, a GET request is made to the database where all the post created by users are obtained, as well as their respective likes and comments._
 
 ### Link
 ```
@@ -73,7 +71,8 @@ link(name, id){
   }
 }
 ```
-_En este otro pequeño código se analiza a que usuario deseas acceder, si es usted mismo que por equivocaión toco, o bien que le era más cómodo en ese momento, accederá a su perfil en caso contrario pasaría a ver la informacion del usuario (sin poder realizar alguna modificación)_
+_This other code analyzes which user you want to access, if it is yourself who mistakenly touched, or who was more comfortable at the time, you will access your profile otherwise you would go to see the user's information (without being able to some modification)._
+
 
 ![LINKAGE-G PROFILE](http://glandaburo.online/profile.png)
   **PAGE Profile**
@@ -109,7 +108,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 ### Install este Proyecto 🔧    
-_Para la utilizacion de este codigo bien puede tene un rntend realizado por usted o una ez descargado o clonado el repositorio deberia crear una base de datos la cual debe ponerse  en la localizacion .env:_
+_For the use of this code you may well have a frontend made by you; or once downloaded or cloned, the repository should create a database which must be located. **.env**_
 
 ```
 DB_CONNECTION=mysql
@@ -119,7 +118,7 @@ DB_DATABASE=LinkageG
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-_En este caso hemos puesto el mismo nombre que nuestro proyecto_
+_In this case we have put the same name as our project_
 
 ``` 
     php artisan migrate:fresh --seed
@@ -142,7 +141,7 @@ _En este caso hemos puesto el mismo nombre que nuestro proyecto_
 });
  
 ``` 
-_En este pequeño se puede visualizar las rutas que tienen los diferentes endpoints creados, para el controlador de uauario, de las cuales, las de ser necesarias estan inmersas en la autentificación (regidas por el token) y a todas se acceden mediante users que s el prefijo indicado ._
+_In this code you can see the routes that the different endpoints have created, for the user controller, of which, if necessary, they are immersed in authentication (governed by the token) and all are accessed through users who have the prefix indicated._
 ```
   public function uploadImage(Request $request, $id)
     {
@@ -167,15 +166,13 @@ _En este pequeño se puede visualizar las rutas que tienen los diferentes endpoi
         }
     }
 ```
-_Este coóigo no es más que una función que nos permite subir la imagen deseada por el usuario a la publicacion previamente creada._ 
+_This code is nothing more than a function that allows us to upload the image desired by the user to the previously created publication._ 
 
  ![LINKAGE-G TABLE-RELATIONS](http://glandaburo.online/BaseDatos.png)
  **Data Base**
+ _As you can see we have the list of tables used in the project._
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://github.com/G1ovann16/E-Commerce/blob/master/README.md) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
+_I hope you enjoy it and you like it!!!!!! ;)_
 
 ## Autor ✒️
 * **Giovanni Landaburo Del Arco** - *Trabajo Inicial* - [glandaburo](https://github.com/G1ovann16)
