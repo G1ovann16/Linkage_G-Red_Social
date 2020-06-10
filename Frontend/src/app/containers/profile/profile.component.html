@@ -83,7 +83,7 @@
                   <i class="far fa-thumbs-up"> {{post.likes.length}}</i>
                 </a>
                 <a href="#" class="btn btn-post">Comments  {{post.comments.length}}</a>
-                  <a (click)="deletePost()" href="#" class="btn btn-add ml-2">
+                  <a (click)="deletePost(post.id)" href="#" class="btn btn-add ml-2">
                     <i class="fa fa-trash"></i>
                   </a> 
                 <button href="#" class="btn btn-add ml-2" data-toggle="modal"

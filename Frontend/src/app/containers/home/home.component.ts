@@ -4,7 +4,6 @@ import {UserService} from '../../services/user.service';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { from } from 'rxjs';
 import * as moment from 'moment';
 import { PostService } from 'src/app/services/post.service';
 
@@ -58,7 +57,6 @@ data = [];
           this.comentList[i] = this.allPost[i].comments;
           this.data[i] = moment(this.allPost[i].created_at).fromNow();
         }
-        console.log(this.allPost[1].image, this.allPost[0].user.name ,this.allPost);
     },
      err => console.log(err)
     );
@@ -70,7 +68,7 @@ link(name, id){
   if (localStorage.getItem('User') === localStorage.getItem('userActual')){
   setTimeout(() => this.router.navigate(['profile']), 1000);
 }else{
-  setTimeout(() => this.router.navigate([`user/${name}`]), 1000); 
+  setTimeout(() => this.router.navigate([`user/${name}`]), 1000);
   }
 }
 // tslint:disable-next-line: variable-name
@@ -116,7 +114,7 @@ addClickComment(post_id: string){
       },
        err => console.log(err)
       );
-      postForm.reset();
+       postForm.reset();
       }
 
       createComment(e, post_id) {

@@ -80,6 +80,7 @@ addLikeComment(body, post_id){
 });
 
 }
+
 addComment(body){
   console.log(body);
   return this.http.post<any>(environment.API_URL + `/addComment`, body,
