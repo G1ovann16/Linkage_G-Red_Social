@@ -2,14 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Post;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Post::class, function (Faker $faker) {
     return [
-        'id_user'=>$faker->numberBetween(1,40),
-        'name'=>$faker->sentence(2),
-        'description'=>$faker->realText(300),
-        'image'=>'https://picsum.photos/500/500?random='.$faker->numberBetween(1,100)
+        'user_id'=>$faker->numberBetween(1,40),
+        'name'=>$faker->sentence(1),
+        'description'=>$faker->realText(200),
+        'image' => $faker->imageUrl($width= 1200, $height= 1000),
     ];
 });

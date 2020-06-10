@@ -21,10 +21,9 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'lastName' => $faker->lastName,
-        'bio' => $faker->realTect(255),
-        'tag' => $faker->sentence(2),
-        'avatar' => $faker->lastName,   
-        // https://picsum.photos/500/500?random='.$faker->numberBetween(1,100),
+        'bio' => $faker->realText(255),
+        'tag' => $faker->sentence(1),
+        'avatar' => $faker->imageUrl($width= 600, $height= 400),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
