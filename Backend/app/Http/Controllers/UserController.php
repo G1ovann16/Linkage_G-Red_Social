@@ -38,6 +38,7 @@ class UserController extends Controller
             $token = $user->createToken('authToken')->accessToken;
             $user->token=$token;
             return response([
+                'message' => 'user loggin successfully',
                 'user'=>$user
             ]);
         } catch (\Exception $e) {

@@ -18,6 +18,7 @@ import { LandingComponent } from './containers/landing/landing.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { es_ES } from 'ng-zorro-antd/i18n';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 
@@ -35,6 +36,7 @@ registerLocaleData(es);
     FollowingComponent,
     EditProfileComponent,
     LandingComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ registerLocaleData(es);
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgZorroAntdModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]

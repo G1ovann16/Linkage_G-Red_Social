@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import * as moment from 'moment';
 import { PostService } from 'src/app/services/post.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-home',
@@ -39,13 +40,11 @@ data = [];
   constructor(
     private userService: UserService,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private notification: NzNotificationService
   ) {}
   ngOnInit(): void {
     this.getAllPosts();
-    // localStorage.setItem('authToken', res['user']['token']);
-    // localStorage.setItem('User', res['user']['id']);
-    // localStorage.setItem('nameUser', res['user']['name']);
   }
   getAllPosts(){
     this.postService.getAllPost()
@@ -109,11 +108,13 @@ addClickComment(post_id: string){
         this.postService.addPost(postFormData)
       .subscribe(
         user => {
+          this.notification.success('Post created', 'very nice job', { nzDuration: 4000 });
           console.log(user);
           this.getAllPosts();
       },
        err => console.log(err)
       );
+       // tslint:disable-next-line: align
        postForm.reset();
       }
 

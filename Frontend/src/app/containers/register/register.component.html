@@ -45,16 +45,16 @@
           <p class="mb-4">Create your new account</p>
         
           <!-- Name -->
-          <input type="name" id="defaultLoginFormEmail" name="name" ngModel class="form-control mb-4" placeholder="Name">
+          <input type="name" id="defaultLoginFormName" name="name" ngModel required class="form-control mb-4" placeholder="Name">
 
           <!-- Last Name -->
-          <input type="name" id="defaultLoginFormEmail" name="lastName" ngModel class="form-control mb-4" placeholder="Last Name">
+          <input type="name" id="defaultLoginFormLastName" name="lastName" required ngModel class="form-control mb-4" placeholder="Last Name">
 
           <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" name="email" ngModel class="form-control mb-4" placeholder="E-mail">
+          <input type="email" id="defaultLoginFormEmail" name="email" required ngModel class="form-control mb-4" placeholder="E-mail">
         
           <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" name="password" ngModel class="form-control mb-4" placeholder="Password">
+          <input type="password" id="defaultLoginFormPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,40}$" name="password" ngModel class="form-control mb-4" placeholder="Password">
         
           <!-- Sign in button -->
           <button class="btn btn-outline-success mt-2 mb-3" block="true" type="submit">Register</button>

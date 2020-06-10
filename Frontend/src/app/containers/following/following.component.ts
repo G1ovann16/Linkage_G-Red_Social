@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { PostService } from 'src/app/services/post.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class FollowingComponent implements OnInit {
     constructor(
       public userService: UserService,
       public postService: PostService,
-      private router: Router
+      private router: Router,
+      private notification: NzNotificationService
       ) { }
   
     ngOnInit(): void {
@@ -74,6 +76,7 @@ export class FollowingComponent implements OnInit {
         this.userService.addFriends(this.bodyFollower)
               .subscribe(res => {
                 console.log(res);
+                this.notification.success('ohhhh', 'one friend more', { nzDuration: 4000 });
                 this.getUser();
               });
       }

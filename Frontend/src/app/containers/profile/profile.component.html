@@ -9,7 +9,7 @@
             <h5 class="card-title mt-3">
               {{allPersonalPost['user']?.name}} {{allPersonalPost['user']?.lastName}}
             </h5>
-            <h6><i class="fas fa-globe red-icon"></i> Valencia, Espana</h6>
+            <h6><i class="fas fa-globe red-icon"></i> {{allPersonalPost['user']?.city}} </h6>
             <p>{{allPersonalPost['user']?.bio}}</p>
             <p><i class="far fa-clipboard red-icon"></i> Posts ({{allPersonalPost['user']?.post.length}})</p>
             <p><i class="fas fa-users red-icon"></i> Friends ({{allPersonalPost['user']['following']?.length}})</p>

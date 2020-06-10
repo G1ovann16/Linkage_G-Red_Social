@@ -17,10 +17,10 @@
           <p class="mb-4">Sign in into your account</p>
         
           <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" name="email" ngModel class="form-control mb-4" placeholder="E-mail">
+          <input type="email" id="defaultLoginFormEmail" required name="email" ngModel class="form-control mb-4" placeholder="E-mail">
         
           <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" name="password" ngModel class="form-control mb-4" placeholder="Password">
+          <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$" required id="defaultLoginFormPassword" name="password" ngModel class="form-control mb-4" placeholder="Password">
         
           <div class="d-flex justify-content-around">
             <div>

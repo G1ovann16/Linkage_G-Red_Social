@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('lastName')->nullable();
+            $table->string('city')->nullable();
             $table->string('bio')->nullable();
             $table->string('tag')->nullable();
             $table->string('avatar')->nullable()->default('profile.png');

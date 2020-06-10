@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { PostService } from 'src/app/services/post.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-profile',
@@ -40,7 +41,8 @@ allPersonalPost = [];
   constructor(
     public userService: UserService,
     public postService: PostService,
-    private router: Router
+    private router: Router,
+    private notification: NzNotificationService
     ) { }
 
   ngOnInit(): void {
@@ -72,9 +74,10 @@ allPersonalPost = [];
     this.Post.image = 'https://www.axonize.com/wp-content/uploads/2019/03/AxonizeBlog_SinglePost_815x600_FacilityintoSmartBuilding.jpg';
     this.Post.user_id = localStorage.getItem('User');
     console.log(this.Post);
-    this.postService.editPost(this.Post, 3)
+    this.postService.editPost(this.Post, localStorage.getItem('User'))
     .subscribe(
       user => {
+        this.notification.warning('Post edited', 'Better ;) !!!');
         console.log(user);
         this.getUser();
     },
@@ -86,6 +89,7 @@ allPersonalPost = [];
     .subscribe(
       user => {
         console.log(user);
+        this.notification.warning('Post delete', 'Didn`t like this post??');
         this.getUser();
     },
      err => console.log(err)
