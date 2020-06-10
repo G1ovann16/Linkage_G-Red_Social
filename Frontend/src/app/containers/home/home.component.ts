@@ -58,19 +58,20 @@ data = [];
           this.comentList[i] = this.allPost[i].comments;
           this.data[i] = moment(this.allPost[i].created_at).fromNow();
         }
-        console.log(this.allPost, this.comentList, this.data);
+        console.log(this.allPost[1].image, this.allPost[0].user.name ,this.allPost);
     },
      err => console.log(err)
     );
     }
-actualUser(id, index){
+
+
+link(name, id){
   localStorage.setItem('userActual', id);
   if (localStorage.getItem('User') === localStorage.getItem('userActual')){
   setTimeout(() => this.router.navigate(['profile']), 1000);
 }else{
-  setTimeout(() => this.router.navigate([`user/${this.allPost[index].user.name}`]), 1000);
-}
-
+  setTimeout(() => this.router.navigate([`user/${name}`]), 1000); 
+  }
 }
 // tslint:disable-next-line: variable-name
 addClick(post_id: string){

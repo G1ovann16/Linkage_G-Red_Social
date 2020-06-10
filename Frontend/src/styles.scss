@@ -93,3 +93,15 @@ ul {
     font-weight: 700;
     color: $title;
 }
+
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
+    color: $red;
+    border-color:$red;
+    background-color: white;
+}
+
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle:hover {
+    color: white;
+    border-color:$red;
+    background-color: $red;;
+}

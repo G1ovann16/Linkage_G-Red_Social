@@ -11,7 +11,7 @@
             <h6><i class="fas fa-globe"></i>  {{allPersonalPost['user'].city}}</h6>
             <p>  {{allPersonalPost['user'].tag}}</p>
             <p><i class="far fa-clipboard"></i> post ({{allPersonalPost['user'].post.length}})</p>
-            <p><i class="fas fa-users"></i> Friends (530)</p>
+            <p><i class="fas fa-users"></i> Friends ({{allPersonalPost['user']['following']?.length}})</p>
           </div>
         </div>
   
@@ -57,7 +57,7 @@
                         aria-describedby="inputGroupFileAddon01">
                         <label class="custom-file-label" for="inputGroupFile01"></label>
                        </div>
-                       <button  class="btn btn-outline-success mt-3" type="submit">Save Image</button>
+                       <button  class="btn btn-outline-success mt-3 mr-3" type="submit">Save Image</button>
                        <a style="cursor: pointer;" (click)="editProfile(profileForm)" class="btn btn-outline-success mt-3">Save Changes</a>
               </form>
           </div>

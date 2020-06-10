@@ -5,7 +5,7 @@
         <div class="card mt-3">
           <div class="card-body text-center">
             <img class="main-avatar"
-              src="{{allPersonalPost['user']?.avatar}}" alt="">
+              src="http://localhost:8000/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
             <h5 class="card-title mt-3">
               {{allPersonalPost['user']?.name}} {{allPersonalPost['user']?.lastName}}
             </h5>
@@ -24,11 +24,12 @@
             </h5>
             <div class="d-flex align-items-top" *ngFor="let friends of allPersonalPost['user']['following'] ">
               <div class="p-2">
-                <img class="comments-avatar"
-                  src="{{friends.avatar}}" alt="">
+                <img class="main-avatarPost"
+              src="http://localhost:8000/images/users/{{friends.avatar}}" alt="">
               </div>
               <div class="p-2">
-                <p class="comment-username">{{friends.name}}</p>
+                <p class="comment-username" style="cursor: pointer;" (click)="link(friends.name, friends.id)"> {{friends.name}}</p>
+                <p class="comment-username" > {{friends.tag}}</p>
               </div>
             </div>
             <hr>
@@ -65,7 +66,7 @@
           <div class="card-body" *ngFor="let post of allPersonalPost['user']['post']; let i = index;">
             <div class="d-flex bd-highlight align-items-center">
               <div class="card-title p-2 bd-highlight">
-                <img src="{{allPersonalPost['user']?.avatar}}" alt="">
+                <img class="main-avatarPost" src="http://localhost:8000/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
               </div>
               <div class="p-2 bd-highlight">
                 <h5><a routerLink="profile"> {{allPersonalPost['user']?.name}}</a></h5>
@@ -123,12 +124,10 @@
                 <div class="d-flex flex-row mb-3">
                   <div class="d-flex align-items-top">
                     <div class="p-2">
-                      <img class="comments-avatar"
-                      src="{{comment.user.avatar}}"
-                      alt="">
+                      <img class="main-avatarPost" src="http://localhost:8000/images/users/{{comment.user.avatar}}" alt="">
                     </div>
                     <div class="ml-3">
-                      <p class="comment-username"> {{comment.user.name}}</p>
+                      <p class="comment-username" style="cursor: pointer;" (click)="link(comment.user.name, comment.user.id)"> {{comment.user.name}}</p>
                       <p>{{comment.description}}</p>
                       <a style="cursor: pointer;" (click)="addClickComment(post.id)" class="btn btn-add mr-2">
                         <i class="far fa-thumbs-up"> {{comment.likes.length}} </i>
