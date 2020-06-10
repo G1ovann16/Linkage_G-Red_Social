@@ -145,9 +145,7 @@ class PostController extends Controller
             $request->validate(['image' => 'required|image']);
             $post = Post::find($id);
             if($post->image){
-                // File::delete
             }
-
             if(Auth::id() !== $post->user_id){
                 return response([
                     'message' => 'no eres tu descarado',
@@ -156,11 +154,8 @@ class PostController extends Controller
             $imageName = time() . '-' . request()->image->getClientOriginalName();
             $request->image->move('images/posts', $imageName);
             $post->update(['image' => $imageName]);
-            
             return response($post);
-
         } catch (\Exception $e) {
-            // dd($e);
             return response([
                 'error' => $e,
             ], 500);
