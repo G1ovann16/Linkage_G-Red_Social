@@ -101,7 +101,14 @@ export class FollowingComponent implements OnInit {
             });
         }
       }
-  
-  
-  }
-  
+
+      link(name, id){
+        localStorage.setItem('userActual', id);
+        if (localStorage.getItem('User') === localStorage.getItem('userActual')){
+        setTimeout(() => this.router.navigate(['profile']), 1000);
+      }else{
+        setTimeout(() => this.router.navigate([`user/${name}`]), 1000); 
+        }
+      }
+
+}

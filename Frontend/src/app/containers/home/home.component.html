@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
-      <div class="col-8">
+      <div class="col-12 col-sm-12 col-md-8 .col-lg-8 .col-xl-8">
          <!-- Content-card -->
          <div class="card mt-3" #scrollMe [scrollTop]="scrollMe.scrollHeight"  >
           <div class="card-body" *ngFor="let posts of allPost | paginate: { itemsPerPage: 6, currentPage: p } let i = index;">
             <div class="d-flex bd-highlight align-items-center">
               <div class="card-title p-2 bd-highlight">
-                <img class="avatar" src="https://image.shutterstock.com/image-photo/handsome-young-man-on-grey-260nw-492562780.jpg" alt="">
+                <img class="avatar" src="http://localhost:8000/images/users/{{posts.user?.avatar}}" alt="">
               </div>
               <div class="p-2 bd-highlight">
-                    <p class="username" style="cursor: pointer;" (click)="actualUser(posts.user.id, i)">
+                    <p class="username" style="cursor: pointer;" (click)="link(posts.user.name, posts.user.id)">
 
                       {{posts.user?.name}}
                     </p>
@@ -30,16 +30,16 @@
                 <a href="#" class="btn btn-post">Comments  {{posts.comments.length}}</a>
               </div>
               <div class="card-footer">
-                <div class="p-2" *ngFor="let comment of posts.comments">
+                <div class="p-2" *ngFor="let comment of posts.comments, let i = index;">
                 <div class="d-flex flex-row mb-3">
                   <div class="d-flex align-items-top">
                     <div class="p-2">
                       <img class="comments-avatar"
-                      src="{{comment.user.avatar}}"
+                      src="http://localhost:8000/images/users/{{comment.user?.avatar}}"
                       alt="">
                     </div>
                     <div class="ml-3">
-                      <p class="comment-username"> {{comment.user.name}}</p>
+                      <p class="comment-username" style="cursor: pointer;" (click)="link(comment.user.name,comment.user.id)"> {{comment.user.name}}</p>
                       <p>{{comment.description}}</p>
                     </div>
                      
@@ -53,7 +53,7 @@
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
-        <div class="col-4 ">
+        <div class="col-12 col-sm-12 col-md-4 .col-lg-4 .col-xl-4 ">
                 <!-- Post-card -->
                 <div class="card mt-3" >
                   <div class="card-body">

@@ -28,7 +28,7 @@ export class EditProfileComponent implements OnInit {
         localStorage.setItem('nameUser', res['User']['name']);
         this.getUser();
       });
-      body.reset();
+    body.reset();
 }
 getUser(){
   this.userService.getUserById(localStorage.getItem('User'))
@@ -46,7 +46,7 @@ getUser(){
     const imageFormData = new FormData();
     if (imageInput.files[0]) {  imageFormData.set('img', imageInput.files[0]); }
   // tslint:disable-next-line: radix
-  this.postService.editImageProfile(imageFormData)
+    this.postService.editImageProfile(imageFormData)
     .subscribe(res => {
       this.getUser();
     });
