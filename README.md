@@ -1,5 +1,5 @@
 ### About Project 🚀
-_This project is focused on the public; it will be a Social Network, in which the client will be able to make publications with the theme that they deems appropriate, he will be able to make friends, having this as an end or at least one of them, who sits in his comfort zone and can appreciate people who think or create similarly. You will be given the option to edit your profile; to which anyone who wants to follow will have access. Go ahead with your PUBLICATION._
+_This project is focused on the public; it will be a Social Network, in which the client will be able to make publications with the theme that they deems appropriate, they will be able to make friends, having this as an end or at least one of them, who feel in his comfort zone and can appreciate people who think or create similarly. You will be given the option to edit your profile; to which anyone who wants to follow will have access. Go ahead with your PUBLICATION._
     ![LINKAGE-G LANDING](http://glandaburo.online/landing.png)
       **PAGE Landing**
 
