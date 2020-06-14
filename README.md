@@ -1,5 +1,5 @@
 ### About Project 🚀
-_This project is focused on the public; it will be a Social Network, in which the client will be able to make publications with the theme that he deems appropriate, he will be able to make friends, having this as an end or at least one of them, who sits in his comfort zone and can appreciate people who think or create similarly. You will be given the option to edit your profile; to which anyone who wants to follow will have access. Go ahead with your PUBLICATION._
+_This project is focused on the public; it will be a Social Network, in which the client will be able to make publications with the theme that they deems appropriate, he will be able to make friends, having this as an end or at least one of them, who sits in his comfort zone and can appreciate people who think or create similarly. You will be given the option to edit your profile; to which anyone who wants to follow will have access. Go ahead with your PUBLICATION._
     ![LINKAGE-G LANDING](http://glandaburo.online/landing.png)
       **PAGE Landing**
 
@@ -9,7 +9,7 @@ _This project is focused on the public; it will be a Social Network, in which th
   ###Installation of this project 🔧
  _The purpose of this project is for it to be useful to the user and to inspire other developers to collaborate in this digital world. Next, I will take the necessary steps to get your work environment ready._
 
-### Instalación 🔧    
+### INSTALL 🔧    
 ``` npm install
     ng new [Proyecto]
     ng generate components nombre del componente[con su ruta, por default seria sobre app]   o
@@ -22,7 +22,7 @@ _This project is focused on the public; it will be a Social Network, in which th
 
 * [Angular CLI](https://github.com/angular/angular-cli) version 9.1. _This project was generated with this tool, in the link you can access its documentation. It is worth noting that the different components, services, containers, etc. That were used are generated with it._
 *[Boostrap](https://getbootstrap.com/docs/4.5/getting-started) _Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page._
- ## Extras
+ ## ADD
 *[AntDesign](https://ng.ant.design/docs/getting-started/) _Ant Design of Angular is dedicated to providing a good development experience for programmers._
 *[Momentjs](https://momentjs.com/)_To validate, manipulate, and display dates and times in JavaScript._
 *[NPMJS=>Ngx_pagination](https://www.npmjs.com/package/ngx-pagination)
@@ -32,7 +32,7 @@ _This project is focused on the public; it will be a Social Network, in which th
   **PAGE Home**
   
 
-### Instalación 🔧  
+### Install 🔧  
 _For the use of this project you must follow the route_
 *[LINKAG-G](https://github.com/G1ovann16/Linkage_G-Red_Social); _In the same time you can download or make a clone of the repository once obtained, the following command should suffice:_
 
@@ -40,7 +40,7 @@ _For the use of this project you must follow the route_
     ng serve --o
  ```
 
-### Código a destacar
+### CODE
 ``` 
    getAllPosts(){
     this.postService.getAllPost()
@@ -82,7 +82,7 @@ _This other code analyzes which user you want to access, if it is yourself who m
 _Laravel is accessible, powerful, and provides tools required for large, robust applications_
 
 
-## Construido con 🛠️
+## Developer with 🛠️
 
 
 * [LARAVEL] - _The Laravel framework has a few system requirements. All of these requirements are satisfied by the Laravel Homestead virtual machine, so it's highly recommended that you use Homestead as your local Laravel development environment._.
@@ -107,7 +107,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-### Install este Proyecto 🔧    
+### Install Project 🔧    
 _For the use of this code you may well have a frontend made by you; or once downloaded or cloned, the repository should create a database which must be located. **.env**_
 
 ```
@@ -126,7 +126,7 @@ _In this case we have put the same name as our project_
     php artisan serve
  ```
 
- ### Código a destacar
+ ### CODE
 ``` 
    Route::prefix('users')->group(function () {
     Route::post('/register', 'UserController@register');
