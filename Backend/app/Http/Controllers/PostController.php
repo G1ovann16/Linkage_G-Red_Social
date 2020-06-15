@@ -114,8 +114,6 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
