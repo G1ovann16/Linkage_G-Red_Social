@@ -30,7 +30,7 @@ class PostController extends Controller
             $body['user_id'] = Auth::id();
             if($request->has('image')){
                 $imageName = time() . '-' . request()->image->getClientOriginalName(); //time() es como Date.now()
-                request()->image->move('images/posts', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
+                request()->image->move('storage/images/posts', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
                 $body['image'] = $imageName;    
             }
             $post = Post::create($body);

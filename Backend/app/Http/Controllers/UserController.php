@@ -82,7 +82,7 @@ class UserController extends Controller
             $request->validate(['img' => 'required|image']);
             $user = Auth::user();
             $imageName = time() . '-' . request()->img->getClientOriginalName();
-            request()->img->move('images/users', $imageName);
+            request()->img->move('storage/images/users', $imageName);
             $user->update(['avatar' => $imageName]);
             return response($user);
         } catch (\Exception $e) {

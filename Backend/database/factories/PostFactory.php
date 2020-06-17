@@ -10,6 +10,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'user_id'=>$faker->numberBetween(1,40),
         'name'=>$faker->sentence(1),
         'description'=>$faker->realText(200),
-        'image' => $faker->imageUrl($width= 1200, $height= 1000),
+        'image' => $faker->image('public/storage/images/posts',640,480, null, false),
     ];
 });

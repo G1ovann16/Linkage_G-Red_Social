@@ -6,7 +6,7 @@
           <div class="card-body" *ngFor="let posts of allPost | paginate: { itemsPerPage: 6, currentPage: p } let i = index;">
             <div class="d-flex bd-highlight align-items-center">
               <div class="card-title p-2 bd-highlight">
-                <img class="avatar" src="http://localhost:8000/images/users/{{posts.user?.avatar}}" alt="">
+                <img class="avatar" src="http://localhost:8000/storage/images/users/{{posts.user?.avatar}}" alt="">
               </div>
               <div class="p-2 bd-highlight">
                     <p class="username" style="cursor: pointer;" (click)="link(posts.user.name, posts.user.id)">
@@ -19,9 +19,7 @@
                 <i class="far fa-clock"></i> {{data[i]}}
               </div>
             </div>
-            
-            <!-- <img width="100%" src="http://localhost:8000/images/posts/{{posts.image}}" alt=""> -->
-            <img width="100%" src="{{posts.image}}" alt="">
+            <img width="100%" src="http://localhost:8000/storage/images/posts/{{posts.image}}" alt="">
               <p class="post-title mt-3"> {{posts.name}} </p>
               <p class="mt-3"> {{posts.description}} </p>
               <div class="d-flex justify-content-start mt-3 mb-3">
@@ -36,7 +34,7 @@
                   <div class="d-flex align-items-top">
                     <div class="p-2">
                       <img class="comments-avatar"
-                      src="http://localhost:8000/images/users/{{comment.user?.avatar}}"
+                      src="http://localhost:8000/storage/images/users/{{comment.user?.avatar}}"
                       alt="">
                     </div>
                     <div class="ml-3">

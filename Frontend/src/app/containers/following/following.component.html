@@ -4,7 +4,7 @@
       <!-- Profile-card -->
       <div class="card mt-3">
         <div class="card-body text-center">
-          <img class="main-avatar" src="http://localhost:8000/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
+          <img class="main-avatar" src="http://localhost:8000/storage/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
           <h5 class="card-title mt-3">
             {{allPersonalPost['user']?.name}} {{allPersonalPost['user']?.lastName}}
           </h5>
@@ -22,7 +22,7 @@
         <div class="card-body" *ngFor="let post of allPersonalPost['user']['post']; let i = index;">
           <div class="d-flex bd-highlight align-items-center">
             <div class="card-title p-2 bd-highlight">
-              <img class="main-avatarPost" src="http://localhost:8000/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
+              <img class="main-avatarPost" src="http://localhost:8000/storage/images/users/{{allPersonalPost['user']?.avatar}}" alt="">
             </div>
             <div class="p-2 bd-highlight">
               <h5><a routerLink="profile"> {{allPersonalPost['user']?.name}}</a></h5>
@@ -31,7 +31,7 @@
               <i class="far fa-clock"></i> {{data[i]}}
             </div>
           </div>
-          <img width="100%" src="http://localhost:8000/images/posts/{{post.image}}" alt="">
+          <img width="100%" src="http://localhost:8000/storage/images/posts/{{post.image}}" alt="">
             <p class="post-title mt-3"> {{post.name}} </p>
             <p class="mt-3"> {{post.description}} </p>
             <div class="d-flex justify-content-start mt-3 mb-3">
@@ -45,7 +45,7 @@
               <div class="d-flex flex-row mb-3">
                 <div class="d-flex align-items-top">
                   <div class="p-2">
-                    <img class="main-avatarPost" src="http://localhost:8000/images/users/{{comment.user.avatar}}" alt="">
+                    <img class="main-avatarPost" src="http://localhost:8000/storage/images/users/{{comment.user.avatar}}" alt="">
                   </div>
                   <div class="ml-3">
                     <p class="comment-username" style="cursor: pointer;" (click)="link(comment.user.name, comment.user.id)"> {{comment.user.name}}</p>
